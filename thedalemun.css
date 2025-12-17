@@ -93,7 +93,7 @@ p,
 .amun-container,
 .amun-new-wrap {
   width: 90%;
-  max-width: 1200px;
+  max-width: 95%;
   margin: 0 auto;
   padding: 0;
   /* Removing padding as width handles it */
@@ -635,7 +635,7 @@ p,
   grid-template-columns: auto 1fr auto;
   align-items: center;
   width: 90%;
-  max-width: 1200px;
+  max-width: 95%;
   grid-column-gap: 24px;
   margin: 0 auto;
 }

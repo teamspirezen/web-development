@@ -16,8 +16,8 @@
 }
 
 .container {
-  width: clamp(320px, 90vw, 1100px);
-  max-width: 1100px;
+  width: 90%;
+  max-width: 95%;
   margin-inline: auto;
   padding-inline: clamp(16px, 3vw, 28px);
   box-sizing: border-box;
@@ -154,8 +154,8 @@
    ============ */
 .section-mission,
 .section-vision {
-  width: clamp(320px, 90vw, 1100px);
-  max-width: 1100px;
+  width: 90%;
+  max-width: 95%;
   margin-inline: auto;
   padding-block: clamp(24px, 4vw, 40px);
   box-sizing: border-box;
@@ -378,7 +378,7 @@
   .mission-container,
   .vision-container {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    width: clamp(320px, 90vw, 1100px);
+    width: 90%;
     margin-inline: auto;
     gap: clamp(16px, 2.5vw, 28px) !important;
   }
@@ -405,7 +405,7 @@
     grid-template-columns: 1fr 1fr !important; /* override the 1-col rule */
     align-items: stretch;                      /* equal column heights */
     gap: clamp(14px, 3vw, 24px);
-    width: clamp(320px, 90vw, 1100px);
+    width: 90%;
     margin-inline: auto;
   }
 

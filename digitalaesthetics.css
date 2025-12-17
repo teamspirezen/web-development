@@ -80,7 +80,7 @@ a {
 }
 
 .pro-nav__inner {
-  max-width: 1120px;
+  max-width: 95%;
   margin: 0 auto;
   padding-inline: clamp(16px, 3vw, 24px);
   height: 100%;
@@ -385,7 +385,7 @@ a {
 /* ===== LAYOUT WRAPPER ===== */
 .dw-wrap {
   width: 90%;
-  max-width: 1200px;
+  max-width: 95%;
   margin: 0 auto;
 }
 
@@ -404,7 +404,7 @@ a {
 
 .footer-inner {
   width: 90%;
-  max-width: 1200px;
+  max-width: 95%;
   margin: 0 auto;
 }
 

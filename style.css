@@ -47,7 +47,7 @@ body {
 
 .pro-nav__inner {
   width: 90%;
-  max-width: 1050px;
+  max-width: 95%;
   margin: 0 auto;
   height: 78px;
   display: flex;
@@ -744,7 +744,7 @@ button:focus {
 
 /* inner centering */
 .footer-inner {
-  max-width: 1100px;
+  max-width: 95%;
   margin: 0 auto;
   padding: 0 18px;
   box-sizing: border-box;
