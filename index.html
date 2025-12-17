@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Spirezen Enterprises.</title>
+  <link rel="icon" type="image/x-icon" href="logo.svg">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="indexstyle.css">
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="pro-nav" aria-label="Primary Navigation">
+    <div class="pro-nav__inner">
+      <!-- LEFT: Brand -->
+      <a href="index.html" class="pro-nav__brand" aria-label="Spirezen Home">SPIREZEN</a>
+
+      <!-- CENTER: Menu (desktop) -->
+      <ul class="pro-nav__menu" role="menubar">
+        <li role="none"><a role="menuitem" class="pro-nav__link" href="index.html">Home</a></li>
+
+        <li class="pro-has-dd" role="none">
+          <button class="pro-nav__link pro-nav__btn" aria-haspopup="true" aria-expanded="false">
+            Courses
+            <svg class="pro-caret" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M7 10l5 5 5-5" />
+            </svg>
+          </button>
+          <div class="pro-dd" role="menu">
+            <a class="pro-dd__link" role="menuitem" href="munworkshop.html">Munterra</a>
+            <a class="pro-dd__link" role="menuitem" href="digitalaesthetics.html">Digital Aesthetics </a>
+            <a class="pro-dd__link" role="menuitem" href="#">Comming soon</a>
+          </div>
+        </li>
+
+        <li class="pro-has-dd" role="none">
+          <button class="pro-nav__link pro-nav__btn" aria-haspopup="true" aria-expanded="false">
+            Services
+            <svg class="pro-caret" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M7 10l5 5 5-5" />
+            </svg>
+          </button>
+          <div class="pro-dd" role="menu">
+            <a class="pro-dd__link" role="menuitem" href="thedalemunclub.html">thedalemunclub</a>
+            <a class="pro-dd__link" role="menuitem" href="thedalediginova.html">diginova</a>
+          </div>
+        </li>
+
+        <li class="pro-has-dd" role="none">
+          <button class="pro-nav__link pro-nav__btn" aria-haspopup="true" aria-expanded="false">
+            Portfolio
+            <svg class="pro-caret" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M7 10l5 5 5-5" />
+            </svg>
+          </button>
+          <div class="pro-dd" role="menu">
+            <a class="pro-dd__link" role="menuitem" href="thedalemunclub.html">thedalemun</a>
+            <a class="pro-dd__link" role="menuitem" href="thedalewordweft.html">thedalewordweft</a>
+            <a class="pro-dd__link" role="menuitem" href="thedalediginova.html">thedalediginova</a>
+          </div>
+        </li>
+
+        <li role="none"><a role="menuitem" class="pro-nav__link" href="about.html">About Us</a></li>
+
+        <li class="pro-has-dd" role="none">
+          <button class="pro-nav__link pro-nav__btn" aria-haspopup="true" aria-expanded="false">
+            Get in touch
+            <svg class="pro-caret" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M7 10l5 5 5-5" />
+            </svg>
+          </button>
+          <div class="pro-dd" role="menu">
+            <a class="pro-dd__link" role="menuitem" href="career.html">Careers</a>
+            <a class="pro-dd__link" role="menuitem" href="contact.html">Contact us</a>
+          </div>
+        </li>
+      </ul>
+
+      <!-- RIGHT: Logo -->
+      <a href="index.html" class="pro-nav__logoWrap" aria-label="Spirezen Home">
+        <img src="logo.svg" alt="" class="pro-nav__logo" />
+      </a>
+
+      <!-- Mobile trigger -->
+      <button class="pro-hamburger" id="proHamburger" aria-label="Open menu" aria-controls="proDrawer"
+        aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="pro-underline" aria-hidden="true"></div>
+  </nav>
+
+  <!-- ===== Overlay & Bottom Sheet MUST be direct children of <body> ===== -->
+  <div class="pro-overlay" id="proOverlay" hidden></div>
+
+  <aside class="pro-sheet" id="proDrawer" aria-hidden="true" aria-label="Mobile Menu">
+    <!-- Top bar for drag + close -->
+    <div class="pro-sheet__head">
+      <div class="pro-sheet__brand">
+        <img src="logo.svg" class="pro-sheet__logo" alt="">
+        <strong class="pro-sheet__title">SPIREZEN</strong>
+      </div>
+      <button id="proClose" class="pro-sheet__close" aria-label="Close menu">✕</button>
+    </div>
+    <div class="pro-sheet__handle" aria-hidden="true"></div>
+
+    <!-- Menu Body -->
+    <nav class="pro-sheet__body" role="menu">
+      <!-- ✅ Home first -->
+      <a class="pro-sheet__item" href="index.html" role="menuitem">Home</a>
+
+      <details class="pro-sheet__acc" role="none">
+        <summary class="pro-sheet__item" role="menuitem" aria-haspopup="true">Courses</summary>
+        <div class="pro-sheet__panel">
+          <a class="pro-sheet__sub" href="munworkshop.html">Munterra</a>
+          <a class="pro-sheet__sub" href="digitalaesthetics.html">Digital Aesthetics </a>
+          <a class="pro-sheet__sub" href="#">Comming soon</a>
+        </div>
+      </details>
+
+      <details class="pro-sheet__acc" role="none">
+        <summary class="pro-sheet__item" role="menuitem" aria-haspopup="true">Services</summary>
+        <div class="pro-sheet__panel">
+          <a class="pro-sheet__sub" href="thedalewordweft.html">daleworldweft</a>
+          <a class="pro-sheet__sub" href="thedalediginova.html">diginova</a>
+        </div>
+      </details>
+
+      <details class="pro-sheet__acc" role="none">
+        <summary class="pro-sheet__item" role="menuitem" aria-haspopup="true">Portfolio</summary>
+        <div class="pro-sheet__panel">
+          <a class="pro-sheet__sub" href="thedalemunclub.html">thedalemun</a>
+          <a class="pro-sheet__sub" href="thedalewordweft.html">thedalewordweft</a>
+          <a class="pro-sheet__sub" href="thedalediginova.html">thedalediginova</a>
+        </div>
+      </details>
+
+      <a class="pro-sheet__item" href="about.html" role="menuitem">About Us</a>
+
+      <details class="pro-sheet__acc" role="none">
+        <summary class="pro-sheet__item" role="menuitem" aria-haspopup="true">Get in touch</summary>
+        <div class="pro-sheet__panel">
+          <a class="pro-sheet__sub" href="career.html">Careers</a>
+          <a class="pro-sheet__sub" href="contact.html">Contact Us</a>
+        </div>
+      </details>
+    </nav>
+
+    <!-- Footer -->
+    <div class="pro-sheet__footer">
+      <a href="mailto:hello@spirezen.com" class="footer-link"> spirecare@spirezenenterprises.com</a>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <span class="dot">•</span>
+        <a href="careers.html">Careers</a>
+      </div>
+    </div>
+  </aside>
+
+
+
+  <section class="welcome-section">
+    <div class="content">
+      <h1 class="contenth1">The Spirezen World!</h1>
+      <img src="logo.svg" alt="Spirezen Logo" class="logowel">
+    </div>
+  </section>
+
+  <section class="video-section">
+    <div class="video-wrapper">
+      <video autoplay muted controls loop class="responsive-video">
+        <source src="Indexpagevideo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+
+  <div class="underquote_container">
+    <div class="underquote_quote">
+      <span class="quote_mark">“</span>
+      <p class="quote_text">
+        The biggest communication problem is we do not listen to understand. We listen to reply.
+      </p>
+    </div>
+  </div>
+
+
+  <section class="indeximagebio_section">
+    <div class="indeximagebio_container">
+      <div class="indeximagebio_image">
+        <img src="Indexteamimage.svg" alt="Spirezen Enterprises">
+      </div>
+      <div class="indeximagebio_content">
+        <h1>SPIREZEN ENTERPRISES Pvt Ltd.</h1>
+        <p>
+          At Spirezen Enterprises, we foster a vibrant, future-ready learning ecosystem where students are empowered to
+          think boldly, grow confidently, and achieve meaningfully. Guided by our philosophy — <strong>"Think. Elevate.
+            Succeed."</strong> — we focus on unlocking individual potential through experiential learning and modern
+          communication frameworks. Our programs are designed to develop not just skill, but strategy — equipping
+          learners to thrive in the next chapters of their academic, professional, and personal journeys.
+        </p>
+        <a href="about.html" class="indeximagebio_btn">
+          <span class="icon">+</span>
+          <span class="text">ABOUT US</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="amun_intro">
+    <div class="amun_container">
+
+      <!-- Text Content -->
+      <div class="amun_content">
+        <h1>Join our upcoming workshop - Munterra</h1>
+        <p>
+          Munterra Model United Nations workshop, organized by Spirezen Enterprises online, is an exclusive MUN training
+          experience that develops skills in diplomacy, debate, and leadership. Guided by expert mentors, it offers a
+          powerful and inspiring journey into global dialogue and collaboration ideal for anyone eager to grow, lead,
+          and make an impact.
+        </p>
+        <a href="munworkshop.html" class="amun_btn">
+          <span class="icon">+</span>
+          <span class="text">Register Now</span>
+        </a>
+      </div>
+
+      <!-- Image -->
+      <div class="amun_image">
+        <img src="Mun workshop logo.svg" alt="Spirezen Enterprises">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section Title -->
+  <h1 class="prodlineup_title">Discover Our Vision</h1>
+
+  <!-- Product Lineup Section -->
+  <section class="prodlineup_section" aria-labelledby="program-heading">
+
+    <!-- Filter Menu -->
+    <div class="prodlineup_filter-menu" role="tablist" aria-label="Program filters">
+      <button class="prodlineup_filter-option active" role="tab" aria-selected="true" data-model="thedalemun">
+        thedalemun
+      </button>
+      <button class="prodlineup_filter-option" role="tab" aria-selected="false" data-model="thedalewordweft">
+        thedalewordweft
+      </button>
+      <button class="prodlineup_filter-option" role="tab" aria-selected="false" data-model="thedalediginova">
+        thedalediginova
+      </button>
+    </div>
+
+    <!-- Program Card -->
+    <div class="prodlineup_container fade" id="carCard" aria-live="polite">
+      <div class="prodlineup_image" aria-hidden="false">
+        <img id="car-img" src="thedalemun.svg" alt="thedalemun logo">
+      </div>
+
+      <div class="prodlineup_details">
+        <h1 id="car-title">thedalemun.</h1>
+        <p id="car-price" class="prodlineup_subtitle">Empowering Future-Ready Minds</p>
+        <p id="car-desc">
+          thedalemun is a transformative program designed to build confidence, communication,
+          and global awareness in students through real-world simulations, debate, and leadership
+          training — equipping them to thrive in an interconnected world.
+        </p>
+        <a id="car-button" href="thedalemunclub.html" class="prodlineup_button" role="button">
+          Explore thedalemun
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="about-acetia">
+    <div class="about-container">
+      <div class="about-header">
+        <h2>About Spirezen</h2>
+        <p>
+          With over 8 years of experience, Spirezen has mentored more than 3000 students and partnered with 4+ schools
+          and colleges.
+          Our mission is to empower learners and institutions through practical, future-ready education.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <div class="testimun_name-section" aria-label="Quick stats">
+    <div class="testimun_name-container">
+      <div class="testimun_name-slider" aria-hidden="false">
+        <div class="testimun_name-wrapper">
+          <div class="testimun_name-logo">
+            <div class="testimun_name-title">8+</div>
+            <div class="testimun_name-text">Years of mentoring excellence under MUN's.</div>
+          </div>
+
+          <div class="testimun_name-logo">
+            <div class="testimun_name-title">3000+</div>
+            <div class="testimun_name-text">Students trained and transformed.</div>
+          </div>
+
+          <div class="testimun_name-logo">
+            <div class="testimun_name-title">4+</div>
+            <div class="testimun_name-text">Institutions partnered with Spirezen.</div>
+          </div>
+
+          <div class="testimun_name-logo">
+            <div class="testimun_name-title">100%</div>
+            <div class="testimun_name-text">Focus on practical and future-ready skills.</div>
+          </div>
+          <!-- JS will clone these to make the loop seamless -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="team-split-section" aria-label="The Spirezen Team">
+    <div class="team-split-left">
+      <p class="team-overline">Spirezen Leadership Team</p>
+      <h2 class="team-title">MEET OUR TEAM</h2>
+      <p class="team-description">
+        Spirezen’s team comprises skilled innovators dedicated to pushing the boundaries of performance. Each member
+        contributes unique strengths and expertise, making our team a driving force in the industry.
+      </p>
+    </div>
+
+    <div class="team-split-right">
+      <div class="team-carousel">
+        <div class="team-slide active">
+          <img src="Founder Image 2.svg" alt="Nitin Thilak Lakshminathan" loading="lazy">
+          <div class="team-slide-info">
+            <span>Chief Executive Officer</span>
+            <h3>NITIN THILAK LAKSHMINATHAN</h3>
+          </div>
+        </div>
+        <div class="team-slide active">
+          <img src="Dhanyaa.svg" alt="Dhanyaa Sri" loading="lazy">
+          <div class="team-slide-info">
+            <span>PA</span>
+            <h3>DHANYAA SRI</h3>
+          </div>
+        </div>
+        <div class="team-slide active">
+          <img src="Sudharson.svg" alt="SUDHARSON" loading="lazy">
+          <div class="team-slide-info">
+            <span>Social Media Head</span>
+            <h3>SUDHARSON</h3>
+          </div>
+        </div>
+        <div class="team-slide active">
+          <img src="tavisi.svg" alt="Tavisi Agarwal" loading="lazy">
+          <div class="team-slide-info">
+            <span>Chief People Officer</span>
+            <h3>Tavisi Agarwal</h3>
+          </div>
+          <div class="team-slide active">
+            <img src="netra.svg" alt="NETRA S" loading="lazy">
+            <div class="team-slide-info">
+              <span>HR</span>
+              <h3>NETHRA S</h3>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- More slides here -->
+      </div>
+
+      <!-- ✅ Dots moved below image -->
+      <div class="team-nav-dots" role="tablist" aria-label="Team navigation">
+        <button class="team-dot active" aria-selected="true" aria-label="1"></button>
+        <button class="team-dot" aria-label="2"></button>
+        <button class="team-dot" aria-label="3"></button>
+        <button class="team-dot" aria-label="4"></button>
+        <button class="team-dot" aria-label="5"></button>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="key-features-section" aria-labelledby="features-heading">
+    <div class="features-container">
+      <div class="feature-left" id="features-heading">
+        OUR KEY FEATURES &amp; STRENGTHS
+      </div>
+
+      <div class="feature-items" role="list">
+        <div class="feature-box" role="listitem">
+          <h3>Enriched Learning Environment</h3>
+          <p>At Spirezen Enterprises, we provide a dynamic and enriched learning environment designed to empower
+            students to excel academically and personally.</p>
+        </div>
+
+        <div class="feature-box" role="listitem">
+          <h3>Think. Elevate. Succeed.</h3>
+          <p>Our motto reflects our deep commitment to growth and achievement. We inspire learners to think critically,
+            elevate their skills, and succeed with confidence.</p>
+        </div>
+
+        <div class="feature-box" role="listitem">
+          <h3>Innovative Teaching Methods</h3>
+          <p>Through experiential learning and real-world applications, we equip participants with the tools to advance
+            their communication skills and navigate future challenges effectively.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="announcement_section" aria-label="Announcements">
+    <div class="announcement_header">
+      <h2 id="announcements-title">Latest Announcements</h2>
+      <p class="announcement_subtitle">
+        Keep up with our workshops, orientations, and events.
+      </p>
+    </div>
+
+    <div class="announcement_slider_container" aria-roledescription="carousel">
+      <button class="announcement_button prev" aria-label="Previous announcement" type="button">
+        &#10094;
+      </button>
+
+      <div class="announcement_slider_wrapper">
+        <div class="announcement_slider" id="announcementSlider" role="list">
+          <article class="announcement_card" role="listitem">
+            <img loading="lazy" src="Pemmunclub launch.svg" alt="Pem Orientation session" />
+            <div class="announcement_info">
+              <h3>thedalemun club launch at PEM School of Excellence</h3>
+              <p>
+                PEM School of Excellence began its academic journey with an inspiring
+                Launch day, sparking excitement and new connections.
+              </p>
+            </div>
+          </article>
+          <article class="announcement_card" role="listitem">
+            <img loading="lazy" src="munterra announcement .svg" alt="Munterra workshop" />
+            <div class="announcement_info">
+              <h3>Munterra - the ultimate mun workshop</h3>
+              <p>
+                Munterra hosted an online MUN workshop on 28th September 2025, uniting participants from London,
+                Maldives, India, and beyond for a vibrant and successful event.
+              </p>
+            </div>
+          </article>
+          <article class="announcement_card" role="listitem">
+            <img loading="lazy" src="citannouncement.svg" alt="CIT workshop" />
+            <div class="announcement_info">
+              <h3>Workshop at Coimbatore Institute of Technology</h3>
+              <p>
+                Hands-on workshop at CIT focusing on public speaking and resolution
+                writing for students.
+              </p>
+            </div>
+          </article>
+
+          <article class="announcement_card" role="listitem">
+            <img loading="lazy" src="Agaram orientation.svg" alt="Agaram orientation" />
+            <div class="announcement_info">
+              <h3>thedalemun club sessions at Agaram Public School</h3>
+              <p>
+                Kickstarting a journey of learning and growth at Agaram Public School
+                with enthusiasm and inspiration.
+              </p>
+            </div>
+          </article>
+
+          <article class="announcement_card" role="listitem">
+            <img loading="lazy" src="vvmun announcement .svg" alt="Valley Varsity MUN" />
+            <div class="announcement_info">
+              <h3>Valley Varsity Model United Nations</h3>
+              <p>
+                thedalemun hosted the Valley Varsity MUN, engaging 300–400 delegates
+                in a dynamic MUN experience.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <button class="announcement_button next" aria-label="Next announcement" type="button">
+        &#10095;
+      </button>
+    </div>
+  </section>
+
+
+</body>
+
+
+<footer class="footer-container" aria-labelledby="footer-heading">
+  <h2 id="footer-heading" class="visually-hidden">Site Footer</h2>
+
+  <div class="footer-inner">
+    <div class="footer-grid">
+
+      <!-- Left: About Section -->
+      <section class="footer-col footer-about" aria-labelledby="about-title">
+        <img src="logo.svg" alt="Spirezen Logo" class="logofooter" />
+        <h3 id="about-title" class="visually-hidden">About Spirezen</h3>
+        <p class="footer-about-text">
+          At Spirezen Enterprises, we inspire excellence through education, growth, and
+          innovation. Founded with the mission to elevate minds and empower futures,
+          our team is committed to redefining learning experiences in India and beyond.
+        </p>
+      </section>
+
+      <!-- Center: Quick Links (collapsible on small screens) -->
+      <nav class="footer-col footer-links" aria-labelledby="links-title">
+        <div class="links-head">
+          <h4 id="links-title">QUICK LINKS</h4>
+          <button class="links-toggle" aria-expanded="false" aria-controls="quick-links-list"
+            aria-label="Toggle quick links">▾</button>
+        </div>
+        <ul id="quick-links-list" class="quick-links" role="navigation">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT US</a></li>
+          <li><a href="team.html">OUR TEAM</a></li>
+          <li><a href="portfolio.html">PORTFOLIO</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="join.html">JOIN US</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right: Address & Contact -->
+      <section class="footer-col footer-contact" aria-labelledby="contact-title">
+        <h4 id="contact-title">OUR CORPORATE ADDRESS</h4>
+        <address class="footer-address">
+          SPIREZEN ENTERPRISES Pvt Ltd.<br>
+          JS Bakers, Uliyampalayam,<br>
+          Thondamuthur, Coimbatore, Tamil Nadu, India — 641109
+        </address>
+
+        <h4>MAIL US</h4>
+        <p>
+          <a class="footer-email" href="mailto:spirecare@spirezenenterprises.com">
+            spirecare@spirezenenterprises.com
+          </a>
+        </p>
+
+        <div class="social-media" aria-label="Social links">
+          <!-- use data-src to lazy-load icons via JS -->
+          <a class="social-link" href="https://www.instagram.com/spirezenenterprises" target="_blank" rel="noopener"
+            aria-label="Instagram">
+            <img data-src="instatosvg.svg" alt="Instagram" class="social-icon" />
+          </a>
+          <a class="social-link" href="#" target="_blank" rel="noopener" aria-label="Facebook">
+            <img data-src="facetosvg.svg" alt="Facebook" class="social-icon" />
+          </a>
+          <a class="social-link" href="https://x.com/Spirezen" target="_blank" rel="noopener" aria-label="Twitter">
+            <img data-src="xtosvg.svg" alt="Twitter" class="social-icon" />
+          </a>
+          <a class="social-link" href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <img data-src="linkedintosvg.svg" alt="LinkedIn" class="social-icon" />
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        © <span id="current-year"></span>
+        <span class="highlight">SPIREZEN ENTERPRISES Pvt Ltd.</span>, ALL RIGHTS RESERVED.
+      </p>
+      <button class="back-to-top" aria-label="Back to top">↑</button>
+    </div>
+  </div>
+</footer>
+
+
+<script src="nav.js"></script>
+<script src="footer.js"></script>
+<script src="index.js"></script>
+<script src="script.js"></script>
+<script src="indeximg.js"></script>
+<script src="testi.js"></script>
+<script src="cardscript.js"></script>
+<script src="https://cdn-in.pagesense.io/js/60056259301/13f70b01514e472b96a252ee37209a38.js"></script>
+
+</html>

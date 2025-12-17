@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Spirezen Enterprises.</title>
+    <link rel="icon" type="image/x-icon" href="logo.svg">
+    <link rel="stylesheet" type="text/css" target="_blank" href="style.css" />
+    <link rel="stylesheet" type="text/css" target="_blank" href="about.css" />
+  </head>
+  <body>
+<nav class="pro-nav" aria-label="Primary Navigation">
+  <div class="pro-nav__inner">
+    <!-- LEFT: Brand -->
+    <a href="index.html" class="pro-nav__brand" aria-label="Spirezen Home">SPIREZEN</a>
+
+    <!-- CENTER: Menu (desktop) -->
+    <ul class="pro-nav__menu" role="menubar">
+      <li role="none"><a role="menuitem" class="pro-nav__link" href="index.html">Home</a></li>
+
+      <li class="pro-has-dd" role="none">
+        <button class="pro-nav__link pro-nav__btn" aria-haspopup="true" aria-expanded="false">
+          Portfolio
+          <svg class="pro-caret" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M7 10l5 5 5-5"/>
+          </svg>
+        </button>
+        <div class="pro-dd" role="menu">
+          <a class="pro-dd__link" role="menuitem" href="thedalemunclub.html">thedalemun</a>
+          <a class="pro-dd__link" role="menuitem" href="thedalewordweft.html">thedalewordweft</a>
+          <a class="pro-dd__link" role="menuitem" href="thedalediginova.html">thedalediginova</a>
+        </div>
+      </li>
+
+      <li role="none"><a role="menuitem" class="pro-nav__link" href="about.html">About Us</a></li>
+
+      <li class="pro-has-dd" role="none">
+        <button class="pro-nav__link pro-nav__btn" aria-haspopup="true" aria-expanded="false">
+          Get in touch
+          <svg class="pro-caret" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M7 10l5 5 5-5"/>
+          </svg>
+        </button>
+        <div class="pro-dd" role="menu">
+          <a class="pro-dd__link" role="menuitem" href="career.html">Careers</a>
+                    <a class="pro-dd__link" role="menuitem" href="contact.html">Contact us</a>
+        </div>
+
+      </li>
+    </ul>
+
+    <!-- RIGHT: Logo -->
+    <a href="index.html" class="pro-nav__logoWrap" aria-label="Spirezen Home">
+      <img src="logo.svg" alt="" class="pro-nav__logo" />
+    </a>
+
+    <!-- Mobile trigger -->
+    <button class="pro-hamburger" id="proHamburger" aria-label="Open menu" aria-controls="proDrawer" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="pro-underline" aria-hidden="true"></div>
+</nav>
+
+<!-- ===== Overlay & Bottom Sheet MUST be direct children of <body> ===== -->
+<div class="pro-overlay" id="proOverlay" hidden></div>
+
+<aside class="pro-sheet" id="proDrawer" aria-hidden="true" aria-label="Mobile Menu">
+  <!-- Top bar for drag + close -->
+  <div class="pro-sheet__head">
+    <div class="pro-sheet__brand">
+      <img src="logo.svg" class="pro-sheet__logo" alt="">
+      <strong class="pro-sheet__title">SPIREZEN</strong>
+    </div>
+    <button id="proClose" class="pro-sheet__close" aria-label="Close menu">✕</button>
+  </div>
+  <div class="pro-sheet__handle" aria-hidden="true"></div>
+
+  <!-- Menu Body -->
+  <nav class="pro-sheet__body" role="menu">
+    <!-- ✅ Home first -->
+    <a class="pro-sheet__item" href="index.html" role="menuitem">Home</a>
+
+    <details class="pro-sheet__acc" role="none">
+      <summary class="pro-sheet__item" role="menuitem" aria-haspopup="true">Portfolio</summary>
+      <div class="pro-sheet__panel">
+        <a class="pro-sheet__sub" href="thedalemunclub.html">thedalemun</a>
+        <a class="pro-sheet__sub" href="thedalewordweft.html">thedalewordweft</a>
+        <a class="pro-sheet__sub" href="thedalediginova.html">thedalediginova</a>
+      </div>
+    </details>
+
+    <a class="pro-sheet__item" href="about.html" role="menuitem">About Us</a>
+
+    <details class="pro-sheet__acc" role="none">
+      <summary class="pro-sheet__item" role="menuitem" aria-haspopup="true">Get in touch</summary>
+      <div class="pro-sheet__panel">
+        <a class="pro-sheet__sub" href="career.html">Careers</a>
+      </div>
+          <div class="pro-sheet__panel">
+        <a class="pro-sheet__sub" href="contact.html">Contact Us</a>
+      </div>
+    </details>
+  </nav>
+
+  <!-- Footer -->
+  <div class="pro-sheet__footer">
+    <a href="mailto:hello@spirezen.com" class="footer-link"> spirecare@spirezenenterprises.com</a>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <span class="dot">•</span>
+      <a href="careers.html">Careers</a>
+    </div>
+  </div>
+</aside>
+
+
+  <div class="page">
+
+    <!-- HERO -->
+    <section class="section section-hero">
+      <div class="container hero-container">
+        <div class="hero-image">
+          <img src="Founder picture 1.svg" alt="Founder Picture">
+        </div>
+        <div class="hero-text">
+          <h1 class="h1">Spirezen <br> <span class="text-accent">Enterprises Pvt Ltd.</span></h1>
+          <p class="body">Spirezen, founded by Nitin Thilak Lakshminathan, began as a dream to empower students and graduates to showcase their skills and shape a future they truly deserve.</p>
+          <p class="signature">Nitin Thilak Lakshminathan</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+<section class="section section-services">
+  <div class="container">
+    <h2 class="h2">What We Do.</h2>
+    <p class="lead">
+      We’re on a mission to empower, educate, and elevate individuals through tailored
+      digital and learning experiences.
+    </p>
+
+    <div class="service-grid">
+
+      <a href="thedalemunclub.html" class="card">
+        <div class="card-logo">
+          <img src="thedalemun.svg" alt="Mun Icon">
+        </div>
+        <h4 class="card-title">thedalemun</h4>
+        <p class="card-text">
+          Empowering future leaders through international debate and diplomacy platforms
+          that build confidence and global perspective.
+        </p>
+      </a>
+
+      <a href="thedalewordweft.html" class="card">
+        <div class="card-logo">
+          <img src="thedalewordweft.svg" alt="WordWeft Icon">
+        </div>
+        <h4 class="card-title">thedalewordweft</h4>
+        <p class="card-text">
+          Our learning ecosystem brings two pathways: Skillforge and Learn your skill.
+        </p>
+      </a>
+
+      <a href="thedalediginova.html" class="card">
+        <div class="card-logo">
+          <img src="thedalediginova.svg" alt="DigiNova Icon">
+        </div>
+        <h4 class="card-title">thedalediginova</h4>
+        <p class="card-text">
+          We deliver cutting-edge digital innovation—web, design, and strategy solutions
+          that help brands thrive in today’s landscape.
+        </p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+
+   <!-- MISSION -->
+<section class="section section-mission">
+  <div class="container mission-container">
+    <div class="mission-image">
+      <img src="mission.svg" alt="Mission Image">
+    </div>
+    <div class="mission-text">
+      <h2 class="mission-title">OUR MISSION</h2>
+      <p>
+        Spirezen empowers students and graduates to showcase their skills and grow through strategic learning.
+        Our dynamic environment fosters growth and success. With our motto, “Think. Elevate. Succeed.,” we guide
+        learners in building confidence and communication for career and personal advancement.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="section section-vision">
+  <div class="container vision-container">
+    <div class="vision-text">
+      <h2 class="vision-title">OUR VISION</h2>
+      <p>
+        Our vision is to shape the future of education by empowering students and graduates. Spirezen provides
+        tailored learning to help individuals grow, stand out, and thrive. Our mission is to build an ecosystem
+        that nurtures skills for personal and professional success.
+      </p>
+    </div>
+    <div class="vision-image">
+      <img src="Vision picture.svg" alt="Vision Image">
+    </div>
+  </div>
+</section>
+
+
+    <!-- TEAM -->
+    <section class="section section-team">
+      <div class="container">
+        <h5 class="eyebrow">Team Spirezen</h5>
+        <h2 class="h2">Meet <span class="text-accent">our team</span></h2>
+
+        <div class="carousel">
+          <button class="carousel-btn btn-prev" aria-label="Previous">&#10094;</button>
+
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+              <div class="member">
+                <img src="Founder picture 1.svg" alt="Nitin Thilak Lakshminathan" class="member-img">
+                <h4 class="member-name">Nitin Thilak Lakshminathan</h4>
+                <p class="member-role">Managing Director & CEO</p>
+                <a href="https://www.linkedin.com/in/nitinthilaklakshminathan" target="_blank" class="linkedin">
+                  <img src="linkedin.svg" alt="LinkedIn" class="linkedin-icon" />
+                </a>
+              </div>
+
+              <div class="member">
+                <img src="Dhanyaa.svg" alt="Dhanyaa Sri" class="member-img">
+                <h4 class="member-name">Dhanyaa Sri</h4>
+                <p class="member-role">PA</p>
+                <a href="https://www.linkedin.com/in/dhanyaa-prabakaran-51b977324" target="_blank" class="linkedin">
+                  <img src="linkedin.svg" alt="LinkedIn" class="linkedin-icon" />
+                </a>
+              </div>
+
+              <div class="member">
+                <img src="tavisi.svg" alt="Tavisi Agarwal" class="member-img">
+                <h4 class="member-name">Tavisi Agarwal</h4>
+                <p class="member-role">CPO</p>
+                <a href="#" target="_blank" class="linkedin">
+                  <img src="linkedin.svg" alt="LinkedIn" class="linkedin-icon" />
+                </a>
+              </div>
+              <div class="member">
+                <img src="netra.svg" alt="Nethra" class="member-img">
+                <h4 class="member-name">Nethra</h4>
+                <p class="member-role">HR</p>
+                <a href="#" target="_blank" class="linkedin">
+                  <img src="linkedin.svg" alt="LinkedIn" class="linkedin-icon" />
+                </a>
+              </div>
+
+              <div class="member">
+                <img src="sudharson.svg" alt="Sudharson" class="member-img">
+                <h4 class="member-name">Sudharson</h4>
+                <p class="member-role">Social Media Lead</p>
+                <a href="https://www.linkedin.com/in/sudharson-s-71bb5b315?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="linkedin">
+                  <img src="linkedin.svg" alt="LinkedIn" class="linkedin-icon" />
+                </a>
+              </div>
+
+              <div class="member">
+                <img src="Thaanya.svg" alt="Thanyaa Nair" class="member-img">
+                <h4 class="member-name">Thanyaa Nair</h4>
+                <p class="member-role">Research Lead</p>
+                <a href="#" target="_blank" class="linkedin">
+                  <img src="linkedin.svg" alt="LinkedIn" class="linkedin-icon" />
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+          <button class="carousel-btn btn-next" aria-label="Next">&#10095;</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+
+
+<footer class="footer-container" aria-labelledby="footer-heading">
+  <h2 id="footer-heading" class="visually-hidden">Site Footer</h2>
+
+  <div class="footer-inner">
+    <div class="footer-grid">
+
+      <!-- Left: About Section -->
+      <section class="footer-col footer-about" aria-labelledby="about-title">
+        <img src="logo.svg" alt="Spirezen Logo" class="logofooter" />
+        <h3 id="about-title" class="visually-hidden">About Spirezen</h3>
+        <p class="footer-about-text">
+          At Spirezen Enterprises, we inspire excellence through education, growth, and
+          innovation. Founded with the mission to elevate minds and empower futures,
+          our team is committed to redefining learning experiences in India and beyond.
+        </p>
+      </section>
+
+      <!-- Center: Quick Links (collapsible on small screens) -->
+      <nav class="footer-col footer-links" aria-labelledby="links-title">
+        <div class="links-head">
+          <h4 id="links-title">QUICK LINKS</h4>
+          <button
+            class="links-toggle"
+            aria-expanded="false"
+            aria-controls="quick-links-list"
+            aria-label="Toggle quick links"
+          >▾</button>
+        </div>
+        <ul id="quick-links-list" class="quick-links" role="navigation">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT US</a></li>
+          <li><a href="team.html">OUR TEAM</a></li>
+          <li><a href="portfolio.html">PORTFOLIO</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="join.html">JOIN US</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right: Address & Contact -->
+      <section class="footer-col footer-contact" aria-labelledby="contact-title">
+        <h4 id="contact-title">OUR CORPORATE ADDRESS</h4>
+        <address class="footer-address">
+          SPIREZEN ENTERPRISES Pvt Ltd.<br>
+          JS Bakers, Uliyampalayam,<br>
+          Thondamuthur, Coimbatore, Tamil Nadu, India — 641109
+        </address>
+
+        <h4>MAIL US</h4>
+        <p>
+          <a class="footer-email" href="mailto:spirecare@spirezenenterprises.com">
+            spirecare@spirezenenterprises.com
+          </a>
+        </p>
+
+        <div class="social-media" aria-label="Social links">
+          <!-- use data-src to lazy-load icons via JS -->
+          <a class="social-link" href="https://www.instagram.com/spirezenenterprises" target="_blank" rel="noopener" aria-label="Instagram">
+            <img data-src="instatosvg.svg" alt="Instagram" class="social-icon" />
+          </a>
+          <a class="social-link" href="#" target="_blank" rel="noopener" aria-label="Facebook">
+            <img data-src="facetosvg.svg" alt="Facebook" class="social-icon" />
+          </a>
+          <a class="social-link" href="https://x.com/Spirezen" target="_blank" rel="noopener" aria-label="Twitter">
+            <img data-src="xtosvg.svg" alt="Twitter" class="social-icon" />
+          </a>
+          <a class="social-link" href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <img data-src="linkedintosvg.svg" alt="LinkedIn" class="social-icon" />
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        © <span id="current-year"></span>
+        <span class="highlight">SPIREZEN ENTERPRISES Pvt Ltd.</span>, ALL RIGHTS RESERVED.
+      </p>
+      <button class="back-to-top" aria-label="Back to top">↑</button>
+    </div>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+<script src="announscript.js"></script>
+<script src="cardscript.js"></script> 
+<script src="script.js"></script>
+<script src="about.js"></script>
+<script src="footer.js"></script>
+<script src="https://cdn-in.pagesense.io/js/60056259301/13f70b01514e472b96a252ee37209a38.js"></script>
+
+</html>
