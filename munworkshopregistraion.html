@@ -168,12 +168,13 @@
       </div>
 
       <form id="contact-form" method="post"
-        action="https://script.google.com/macros/s/AKfycbxk9zs16QN4ndp84uoJA2yBz25vdKuYsS_lRB9B-siu7pT1z4vOuakvRqN9VQkWoJ0UFQ/exec"
+        action="https://script.google.com/macros/s/AKfycby2ACZwfKKQTSfNmYZUVAwxt-jvFY1xNuUCs0wIiG1ujC8iioEFBcTw-bG_0g-JhqV-TQ/exec"
         novalidate>
         <div class="munterra_form_grid">
+          <input type="hidden" name="event_name" value="Munterra Workshop">
           <input type="text" name="your-name" placeholder="Full Name" required>
           <input type="number" name="your-age" placeholder="Age" required min="8" max="80">
-          <input type="tel" name="your-number" placeholder="Phone Number (10 digits)" pattern="\\d{10}" required>
+          <input type="tel" name="your-number" placeholder="Phone Number (10 digits)" pattern="[0-9]{10}" required>
           <input type="email" name="your-email" placeholder="Email Address" required>
           <input type="text" name="your-city" placeholder="City" required>
           <input type="text" name="your-school" placeholder="School / University" required>

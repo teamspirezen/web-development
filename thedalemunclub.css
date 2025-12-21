@@ -21,12 +21,14 @@
   max-width: 700px;
   margin: 0 auto 0.5rem;
 }
+
 .tdale-title {
   color: #fff;
   font-weight: 900;
   font-size: clamp(1.8rem, 4vw, 2.4rem);
   margin: 0 0 0.4rem;
 }
+
 .tdale-sub {
   color: rgba(236, 232, 225, 0.75);
   font-size: 1rem;
@@ -52,30 +54,47 @@
   flex-direction: column;
   border-radius: 1rem;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border: 1px solid rgba(255,255,255,0.04);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .tdale-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 28px 70px rgba(0,0,0,0.7);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.7);
 }
 
 /* subtle tilt for desktop */
-.tdale-card--agaram { transform: rotate(-1.5deg); }
-.tdale-card--club { transform: rotate(1.5deg); }
-.tdale-card:hover { transform: rotate(0) translateY(-8px); }
+.tdale-card--agaram {
+  transform: rotate(-1.5deg);
+}
+
+.tdale-card--club {
+  transform: rotate(1.5deg);
+}
+
+.tdale-card:hover {
+  transform: rotate(0) translateY(-8px);
+}
 
 /* media */
-.tdale-media { width: 100%; height: 220px; overflow: hidden; }
+.tdale-media {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
 .tdale-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s ease;
 }
-.tdale-card:hover .tdale-img { transform: scale(1.05); }
+
+.tdale-card:hover .tdale-img {
+  transform: scale(1.05);
+}
 
 /* content */
 .tdale-body {
@@ -85,14 +104,16 @@
   justify-content: space-between;
   flex: 1;
 }
+
 .tdale-card-title {
   font-size: 1.15rem;
   font-weight: 800;
   color: #fff;
   margin: 0 0 0.4rem;
 }
+
 .tdale-card-text {
-  color: rgba(236,232,225,0.8);
+  color: rgba(236, 232, 225, 0.8);
   font-size: 0.97rem;
   line-height: 1.55;
   flex: 1;
@@ -105,16 +126,18 @@
   margin-top: 1rem;
   flex-wrap: wrap;
 }
+
 .tdale-btn {
   font-weight: 800;
   border-radius: 0.8rem;
   font-size: 0.95rem;
   padding: 0.8rem 1.4rem;
 }
+
 .tdale-btn--ghost {
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.08);
-  color: rgba(236,232,225,0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(236, 232, 225, 0.9);
 }
 
 /* responsiveness */
@@ -123,12 +146,17 @@
     grid-template-columns: 1fr;
     gap: 1rem;
   }
+
   .tdale-card--agaram,
   .tdale-card--club {
     transform: none !important;
   }
-  .tdale-media { height: 200px; }
+
+  .tdale-media {
+    height: 200px;
+  }
 }
+
 /* Remove text decoration & reset link color inside .tdale-cta-row */
 .tdale-cta-row a,
 .tdale-btn {
@@ -139,13 +167,14 @@
 /* Keep your gold and ghost button colors intact */
 .tdale-btn--ghost {
   text-decoration: none !important;
-  color: rgba(236,232,225,0.9);
+  color: rgba(236, 232, 225, 0.9);
 }
 
 .tdale-btn--gradient,
 .amun-btn--gradient {
   text-decoration: none !important;
 }
+
 /* === THEDALEMUN CTA Buttons === */
 
 /* Gold buttons — Register & Book a Session */
@@ -162,10 +191,11 @@
   justify-content: center;
   transition: all 0.25s ease;
 }
+
 .tdale-btn--gold:hover {
   background: linear-gradient(90deg, #eec063, #f3e3c3);
   transform: translateY(-4px);
-  box-shadow: 0 18px 45px rgba(238,192,99,0.25);
+  box-shadow: 0 18px 45px rgba(238, 192, 99, 0.25);
 }
 
 /* White outline buttons — Committees & Syllabus */
@@ -182,8 +212,9 @@
   justify-content: center;
   transition: all 0.25s ease;
 }
+
 .tdale-btn--white:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-4px);
 }
 

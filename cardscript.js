@@ -2,6 +2,9 @@
   // DOM refs
   const slider = document.getElementById("announcementSlider");
   const container = document.querySelector(".announcement_slider_container");
+
+  if (!slider || !container) return; // Exit if elements not found
+
   const prevBtn = container.querySelector(".announcement_button.prev");
   const nextBtn = container.querySelector(".announcement_button.next");
 

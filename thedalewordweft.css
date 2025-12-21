@@ -44,7 +44,7 @@ body {
 
 /* avoid content hiding behind fixed nav */
 .page-offset {
-  height: var(--nav-height);
+  display: none;
 }
 
 /* Typography */
@@ -214,7 +214,7 @@ a {
 
 /* ===== HERO SECTION ===== */
 .dw-hero {
-  padding: 72px 0 80px;
+  padding: 20px 0 60px;
   background: #000 !important;
 }
 
