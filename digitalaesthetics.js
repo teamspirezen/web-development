@@ -20,54 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ===== MOBILE SHEET NAV ===== */
-    const hamburger = document.getElementById("proHamburger");
-    const sheet = document.getElementById("proDrawer");
-    const overlay = document.getElementById("proOverlay");
-    const closeBtn = document.getElementById("proClose");
+    /* Logic removed: handled globally by nav.js to prevent conflicts */
 
-    function openSheet() {
-        if (!sheet || !overlay || !hamburger) return;
-        sheet.classList.add("is-open");
-        overlay.classList.add("is-visible");
-        overlay.hidden = false;
-        hamburger.setAttribute("aria-expanded", "true");
-        sheet.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-    }
-
-    function closeSheet() {
-        if (!sheet || !overlay || !hamburger) return;
-        sheet.classList.remove("is-open");
-        overlay.classList.remove("is-visible");
-        hamburger.setAttribute("aria-expanded", "false");
-        sheet.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-        // small delay to allow fade-out before hiding
-        setTimeout(() => {
-            if (!overlay.classList.contains("is-visible")) {
-                overlay.hidden = true;
-            }
-        }, 200);
-    }
-
-    if (hamburger) {
-        hamburger.addEventListener("click", openSheet);
-    }
-
-    if (closeBtn) {
-        closeBtn.addEventListener("click", closeSheet);
-    }
-
-    if (overlay) {
-        overlay.addEventListener("click", closeSheet);
-    }
-
-    // close on escape
-    document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-            closeSheet();
-        }
-    });
 
     /* ===== FOOTER YEAR & BACK TO TOP ===== */
     const yearSpan = document.getElementById("current-year");
@@ -82,34 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* ===== FOOTER QUICK LINKS COLLAPSE (MOBILE) ===== */
-    const linksToggle = document.querySelector(".links-toggle");
-    const quickLinks = document.getElementById("quick-links-list");
-
-    if (linksToggle && quickLinks) {
-        linksToggle.addEventListener("click", () => {
-            const expanded = linksToggle.getAttribute("aria-expanded") === "true";
-            linksToggle.setAttribute("aria-expanded", String(!expanded));
-            quickLinks.style.display = expanded ? "none" : "flex";
-            quickLinks.style.flexDirection = "column";
-            quickLinks.style.alignItems = "flex-start";
-        });
-
-        // default collapsed on small screens
-        const handleResize = () => {
-            if (window.innerWidth <= 768) {
-                quickLinks.style.display = "none";
-                linksToggle.setAttribute("aria-expanded", "false");
-            } else {
-                quickLinks.style.display = "flex";
-                quickLinks.style.flexDirection = "column";
-                quickLinks.style.alignItems = "flex-start";
-            }
-        };
-
-        handleResize();
-        window.addEventListener("resize", handleResize);
-    }
+    /* ===== FOOTER QUICK LINKS (Handled by footer.js) ===== */
+    /* Logic removed to prevent conflict */
     /* ===== FAQ ACCORDION ===== */
     const faqItems = document.querySelectorAll(".dw-faq__item");
 

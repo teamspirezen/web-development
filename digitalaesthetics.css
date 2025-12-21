@@ -30,17 +30,7 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #000000 !important;
-  color: var(--text-secondary);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-color: #000000 !important;
-  background: #000 !important;
-}
+/* Body styles cleaned up to inherit from style.css */
 
 /* avoid content hiding behind fixed nav */
 .page-offset {
@@ -79,15 +69,11 @@ a {
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
 }
 
+/* Rely on style.css for layout */
 .pro-nav__inner {
-  max-width: 95%;
-  margin: 0 auto;
-  padding-inline: clamp(16px, 3vw, 24px);
+  /* Inherits flex from style.css */
+  /* Just keeping dimensions/padding if needed, but style.css handles most */
   height: 100%;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 24px;
 }
 
 .pro-nav__brand {
@@ -98,222 +84,20 @@ a {
   text-transform: uppercase;
 }
 
-.pro-nav__menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  list-style: none;
-}
-
+/* Remove local menu styles to fallback to style.css or keep minimal text styling */
 .pro-nav__link {
-  position: relative;
+  /* logic handled in style.css, keeping color */
   color: var(--text-secondary);
-  font-weight: 600;
-  font-size: 0.95rem;
-  padding-block: 6px;
-  transition: color 0.2s ease;
-}
-
-.pro-nav__link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 2px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--gold-from), var(--gold-to));
-  transition: width 0.22s ease;
 }
 
 .pro-nav__link:hover {
   color: var(--text-primary);
 }
 
-.pro-nav__link:hover::after {
-  width: 100%;
-}
-
-.pro-nav__btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.pro-caret {
-  transition: transform 0.2s ease;
-}
-
-.pro-has-dd.is-open .pro-caret {
-  transform: rotate(180deg);
-}
-
-/* Dropdown */
-.pro-has-dd {
-  position: relative;
-}
-
-.pro-dd {
-  position: absolute;
-  top: 140%;
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: 220px;
-  padding: 10px;
-  border-radius: 16px;
-  background: var(--glass-strong);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.9);
-  opacity: 0;
-  visibility: hidden;
-  translate: 0 4px;
-  transition: opacity 0.16s ease, visibility 0.16s ease, translate 0.16s ease;
-}
-
-.pro-dd__link {
-  display: block;
-  padding: 8px 10px;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-}
-
-.pro-dd__link:hover {
-  background: rgba(148, 163, 184, 0.16);
-  color: var(--text-primary);
-}
-
-.pro-has-dd:hover .pro-dd {
-  opacity: 1;
-  visibility: visible;
-  translate: 0 0;
-}
-
-/* show dropdown when JS toggles is-open on mobile */
-.pro-has-dd.is-open .pro-dd {
-  opacity: 1;
-  visibility: visible;
-  translate: 0 0;
-}
-
-/* Right logo */
-.pro-nav__logoWrap {
-  display: grid;
-  place-items: center;
-}
-
-.pro-nav__logo {
-  width: 46px;
-}
-
-/* underline glow */
-.pro-underline {
-  position: absolute;
-  inset-inline: 0;
-  bottom: -1px;
-  height: 1px;
-  background: rgba(142, 109, 9, 0.6);
-}
-
-/* Mobile nav */
-.pro-hamburger {
-  display: none;
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  background: radial-gradient(circle at top, rgba(0, 0, 0, 0.12), transparent),
-    rgba(0, 0, 0, 0.8);
-  cursor: pointer;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  flex-direction: column;
-  padding: 0;
-  justify-self: end;
-}
-
-.pro-hamburger span {
-  width: 20px;
-  height: 2px;
-  border-radius: 999px;
-  background: #e5e7eb;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
+/* Mobile nav - local definition removed to use Global */
 
 /* ===== MOBILE SHEET ===== */
-.pro-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
-  z-index: 900;
-}
-
-.pro-overlay.is-visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.pro-sheet {
-  position: fixed;
-  inset-inline: 0;
-  bottom: 0;
-  transform: translateY(100%);
-  max-height: 80vh;
-  background: rgba(0, 0, 0, 0.98);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-radius: 26px 26px 0 0;
-  border-top: 1px solid rgba(148, 163, 184, 0.6);
-  box-shadow: 0 -26px 80px rgba(0, 0, 0, 0.9);
-  z-index: 950;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.25s ease-out;
-}
-
-.pro-sheet.is-open {
-  transform: translateY(0);
-}
-
-.pro-sheet__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 18px 6px;
-}
-
-.pro-sheet__brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.pro-sheet__logo {
-  width: 28px;
-}
-
-.pro-sheet__title {
-  font-size: 0.95rem;
-  letter-spacing: 0.12em;
-}
-
-.pro-sheet__close {
-  background: none;
-  border: none;
-  color: #e5e7eb;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
+/* Overlay override removed to use global style.css */
 
 .pro-sheet__handle {
   width: 36px;
@@ -337,46 +121,7 @@ a {
   font-size: 0.95rem;
 }
 
-.pro-sheet__acc summary {
-  list-style: none;
-  cursor: pointer;
-}
-
-.pro-sheet__acc summary::-webkit-details-marker {
-  display: none;
-}
-
-.pro-sheet__panel {
-  padding: 4px 0 10px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.pro-sheet__sub {
-  font-size: 0.9rem;
-  color: #cbd5f5;
-}
-
-.pro-sheet__footer {
-  padding: 10px 18px 16px;
-  border-top: 1px solid rgba(148, 163, 184, 0.5);
-  font-size: 0.85rem;
-  color: #9ca3af;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.footer-link {
-  color: #e5e7eb;
-}
-
-.footer-links {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
+/* Mobile Sheet overrides removed to use global style.css */
 
 .footer-links .dot {
   opacity: 0.7;
@@ -423,8 +168,8 @@ a {
   text-transform: uppercase;
 }
 
-/* ensure QUICK LINKS line is clean and aligned */
-.footer-links {
+/* ensure QUICK LINKS (main footer) line is clean and aligned */
+.footer-grid .footer-links {
   display: flex;
   /* stack children */
   flex-direction: column;
@@ -674,7 +419,7 @@ a {
 /* DA Hero Section */
 .da-hero {
   position: relative;
-  min-height: 85vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
   padding-top: var(--nav-height);
@@ -703,7 +448,7 @@ a {
   justify-content: center;
   padding: 6px 16px;
   border-radius: 999px;
-  background: linear-gradient(90deg,#f3e3c3,#eec063);
+  background: linear-gradient(90deg, #f3e3c3, #eec063);
   border: 1px solid rgba(238, 193, 103, 0.3);
   color: var(--gold-from);
   font-weight: 700;
@@ -712,7 +457,7 @@ a {
   text-transform: uppercase;
   width: fit-content;
   backdrop-filter: blur(4px);
-  color:rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
 }
 
 .da-hero__title {
@@ -741,7 +486,7 @@ a {
   justify-content: center;
   padding: 14px 32px;
   border-radius: 999px;
-  background: linear-gradient(90deg,#f3e3c3,#eec063);
+  background: linear-gradient(90deg, #f3e3c3, #eec063);
   color: #000;
   font-weight: 800;
   font-size: 1rem;
@@ -777,7 +522,7 @@ a {
 
 .da-hero__visual {
   position: relative;
-  height: 500px;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -31,23 +31,27 @@ body {
   position: sticky;
   top: 0;
   z-index: 1200;
-  /* stays below overlay/sheet */
-  background: var(--pro-bg);
-  -webkit-backdrop-filter: blur(10px) saturate(120%);
-  backdrop-filter: blur(10px) saturate(120%);
-  border-bottom: 1px solid var(--pro-border);
+  /* Glassy Effect from Digital Aesthetics */
+  background:
+    radial-gradient(circle at top left, rgba(0, 0, 0, 0.08), transparent) 0 0 / 200% 200% no-repeat,
+    rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
   transition: background .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 
 .pro-nav.is-solid {
-  background: var(--pro-bg-solid);
-  box-shadow: var(--pro-shadow);
+  /* Keep solid state if needed, or let the glassy style persist */
+  background: rgba(8, 8, 8, 0.96);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   border-color: rgba(255, 255, 255, .12);
 }
 
 .pro-nav__inner {
   width: 90%;
-  max-width: 95%;
+  max-width: 1200px;
   margin: 0 auto;
   height: 78px;
   display: flex;
@@ -268,8 +272,16 @@ body {
     display: none !important;
   }
 
+  /* Mobile: Align Brand + Logo left, Hamburger right */
+  .pro-nav__inner {
+    justify-content: flex-start;
+  }
+
   .pro-hamburger {
-    display: block;
+    display: flex;
+    /* Changed from block to flex to support centering content if needed, though block is fine. Using flex to match previous style potentially */
+    margin-left: auto;
+    /* Pushes hamburger to the far right */
   }
 
   .pro-nav__logo {
@@ -485,9 +497,17 @@ body {
   color: var(--pro-accent);
 }
 
-.pro-sheet__footer .footer-links {
-  color: #bdbdbd;
-  font-size: 14px;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+gap: 6px;
+font-size: 14px;
+}
+
+.pro-sheet__footer .footer-links a {
+  color: #bdbdbd !important;
+  text-decoration: none;
 }
 
 .pro-sheet__footer .footer-links a {
