@@ -16,65 +16,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 2) Back to top (smooth + reveal on scroll)
   // 2) Back to top (smooth + reveal on scroll + sheet-aware + focus restore)
-const backBtn = document.querySelector(".back-to-top");
-const headerTarget = document.querySelector(".pro-nav") || document.body;
+  const backBtn = document.querySelector(".back-to-top");
+  const headerTarget = document.querySelector(".pro-nav") || document.body;
 
-if (backBtn) {
-  // start hidden & not focusable until visible
-  backBtn.setAttribute("aria-hidden", "true");
-  backBtn.tabIndex = -1;
-  // ensure it's not a submit button if inside a form
-  try { backBtn.type = "button"; } catch {}
+  if (backBtn) {
+    // start hidden & not focusable until visible
+    backBtn.setAttribute("aria-hidden", "true");
+    backBtn.tabIndex = -1;
+    // ensure it's not a submit button if inside a form
+    try { backBtn.type = "button"; } catch { }
 
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const smoothScrollTop = () => {
-    try {
-      window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
-    } catch { window.scrollTo(0, 0); }
-    // return focus after scroll for keyboard users
-    if (prefersReduced) {
-      if (headerTarget?.focus) headerTarget.focus({ preventScroll: true });
-    } else {
-      setTimeout(() => { if (headerTarget?.focus) headerTarget.focus({ preventScroll: true }); }, 350);
-    }
-  };
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const smoothScrollTop = () => {
+      try {
+        window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
+      } catch { window.scrollTo(0, 0); }
+      // return focus after scroll for keyboard users
+      if (prefersReduced) {
+        if (headerTarget?.focus) headerTarget.focus({ preventScroll: true });
+      } else {
+        setTimeout(() => { if (headerTarget?.focus) headerTarget.focus({ preventScroll: true }); }, 350);
+      }
+    };
 
-  backBtn.addEventListener("click", (e) => { e.preventDefault(); smoothScrollTop(); });
-  backBtn.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); smoothScrollTop(); }
-  });
+    backBtn.addEventListener("click", (e) => { e.preventDefault(); smoothScrollTop(); });
+    backBtn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); smoothScrollTop(); }
+    });
 
-  // rAF-throttled scroll listener for visibility
-  let ticking = false;
-  const threshold = 320; // px scrolled before showing button
-  const updateVisibility = () => {
-    const sheetOpen = document.documentElement.classList.contains("has-sheet-open"); // from your sheet code
-    const show = window.scrollY > threshold && !sheetOpen;
-    if (show && !backBtn.classList.contains("is-visible")) {
-      backBtn.classList.add("is-visible");
-      backBtn.setAttribute("aria-hidden", "false");
-      backBtn.tabIndex = 0;
-    } else if (!show && backBtn.classList.contains("is-visible")) {
-      backBtn.classList.remove("is-visible");
-      backBtn.setAttribute("aria-hidden", "true");
-      backBtn.tabIndex = -1;
-    }
-  };
-  const onScroll = () => {
-    if (!ticking) {
-      requestAnimationFrame(() => { updateVisibility(); ticking = false; });
-      ticking = true;
-    }
-  };
+    // rAF-throttled scroll listener for visibility
+    let ticking = false;
+    const threshold = 320; // px scrolled before showing button
+    const updateVisibility = () => {
+      const sheetOpen = document.documentElement.classList.contains("has-sheet-open"); // from your sheet code
+      const show = window.scrollY > threshold && !sheetOpen;
+      if (show && !backBtn.classList.contains("is-visible")) {
+        backBtn.classList.add("is-visible");
+        backBtn.setAttribute("aria-hidden", "false");
+        backBtn.tabIndex = 0;
+      } else if (!show && backBtn.classList.contains("is-visible")) {
+        backBtn.classList.remove("is-visible");
+        backBtn.setAttribute("aria-hidden", "true");
+        backBtn.tabIndex = -1;
+      }
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => { updateVisibility(); ticking = false; });
+        ticking = true;
+      }
+    };
 
-  // init + bind
-  updateVisibility();
-  window.addEventListener("scroll", onScroll, { passive: true });
+    // init + bind
+    updateVisibility();
+    window.addEventListener("scroll", onScroll, { passive: true });
 
-  // also react when the bottom sheet opens/closes
-  const mo = new MutationObserver(updateVisibility);
-  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-}
+    // also react when the bottom sheet opens/closes
+    const mo = new MutationObserver(updateVisibility);
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+  }
 
 
   // 3) Quick Links toggle (mobile only) + persistence + click-outside
@@ -168,7 +168,7 @@ if (backBtn) {
   if (!btn) return;
 
   // make sure it's a button, not a submit
-  try { btn.type = "button"; } catch {}
+  try { btn.type = "button"; } catch { }
 
   const prefersReduced =
     window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
