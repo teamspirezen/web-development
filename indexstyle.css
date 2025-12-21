@@ -9,7 +9,6 @@ body {
 /* Section wrapper: centered, consistent with site grid */
 .welcome-section {
   width: 90%;
-  max-width: 1200px;
   margin: 0 auto;
   margin: 0 auto;
   padding: 140px 0 24px;
@@ -99,7 +98,7 @@ body {
 .video-section {
   width: 90%;
   /* ✅ match other sections */
-  max-width: 1100px;
+
   /* full layout width on desktop */
   margin: 0 auto;
   padding: clamp(18px, 3vw, 28px) 0;
@@ -161,7 +160,7 @@ body {
 .underquote_container {
   width: 90%;
   /* ✅ keep consistent with other sections */
-  max-width: 1100px;
+
   /* matches your global layout */
   margin: 20px auto;
   /* reduced vertical spacing for better flow */
@@ -174,7 +173,7 @@ body {
 
 .underquote_quote {
   margin: 0 auto;
-  max-width: 800px;
+
   /* ✅ keeps text from being too wide */
 }
 
@@ -252,7 +251,7 @@ body {
 /* Container: full width (1100px max) */
 .indeximagebio_container {
   width: 90%;
-  max-width: 1200px;
+
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -405,7 +404,6 @@ body {
 /* Container: always 90vw / 1100px, centered */
 .amun_container {
   width: 90%;
-  max-width: 1100px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -425,7 +423,6 @@ body {
 
 .amun_image img {
   width: 100%;
-  max-width: 420px;
   /* nice desktop size */
   height: auto;
   border-radius: 10px;
@@ -518,7 +515,6 @@ body {
 
   /* image above text without changing markup */
   .amun_image img {
-    max-width: 360px;
     margin: 0 auto;
   }
 
@@ -563,7 +559,6 @@ body {
   color: #fff;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   width: 90%;
-  max-width: 1100px;
   /* ✅ centered, matches team section */
   margin: 0 auto;
   padding: clamp(28px, 5vw, 60px) 0;
@@ -592,7 +587,6 @@ body {
   color: #fff;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   width: 90%;
-  max-width: 1200px;
   margin: 0 auto;
   padding: clamp(28px, 5vw, 60px) 0;
   box-sizing: border-box;
@@ -947,7 +941,6 @@ body {
 .testimun_name-container {
   position: relative;
   width: 100%;
-  max-width: 1080px;
   overflow: hidden;
   margin: 0 auto;
   box-sizing: border-box;
@@ -1116,7 +1109,6 @@ body {
 
 /* container centered, with a hard max-width like before */
 .features-container {
-  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   gap: 40px;
@@ -1269,8 +1261,7 @@ body {
 .team-split-section {
   --gap: clamp(24px, 4vw, 48px);
 
-  width: 90vw;
-  max-width: 1100px;
+  width: 90%;
   margin: 0 auto 40px;
   /* ⬅ bottom margin added */
   padding: clamp(28px, 5vw, 64px) 0 0;
@@ -1484,8 +1475,7 @@ body {
 
 /* Base */
 .announcement_section {
-  width: 100%;
-  max-width: 1100px;
+  width: 90%;
   margin: 10px auto;
   padding: 18px 16px;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
@@ -1735,9 +1725,7 @@ body {
 .munterra_container,
 .dw-wrap {
   box-sizing: border-box;
-  width: min(1100px, 90%);
-  /* prefer 90% but never exceed 1100px */
-  max-width: 1100px;
+  width: 90%;
   margin-left: auto;
   margin-right: auto;
   padding-inline: clamp(12px, 3.5vw, 20px);
@@ -1850,8 +1838,7 @@ body {
   .features-container,
   .team-split-section,
   .announcement_section {
-    width: 1100px;
-    max-width: 1100px;
+    width: 90%;
   }
 }
 
@@ -1873,8 +1860,7 @@ body {
   .munterra_hero_grid,
   .dw-hero__grid,
   .prodlineup_container {
-    width: min(1100px, 92%);
-    max-width: 1100px;
+    width: 90%;
     margin-inline: auto;
     padding-inline: clamp(12px, 4vw, 20px);
     box-sizing: border-box;
@@ -1995,9 +1981,8 @@ body {
 .about-acetia,
 .munterra_container {
   box-sizing: border-box !important;
-  /* prefer 90vw but clamp between a sensible min and the 1100px cap */
-  width: clamp(320px, 90vw, 1100px) !important;
-  max-width: 1100px !important;
+  /* prefer 90vw */
+  width: 90% !important;
   margin-left: auto !important;
   margin-right: auto !important;
   padding-inline: clamp(12px, 3.5vw, 20px) !important;
