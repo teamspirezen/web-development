@@ -1,29 +1,40 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const track = document.querySelector(".carousel-track");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-  
-    let scrollAmount = 0;
-  
-    if (track && prevBtn && nextBtn) {
-      nextBtn.addEventListener("click", () => {
-        track.scrollBy({ left: 300, behavior: "smooth" });
-      });
-  
-      prevBtn.addEventListener("click", () => {
-        track.scrollBy({ left: -300, behavior: "smooth" });
-      });
-    }
-  });
-  
+// FAQ accordion - Enhanced for smoother animation using CSS max-height/opacity
+document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('button');
+    const answer = item.querySelector('.faq-answer');
 
-    document.querySelectorAll('.dw-faq__item').forEach(item => {
-    const q = item.querySelector('.dw-faq__q');
-    const t = item.querySelector('.dw-faq__toggle');
-    q.addEventListener('click', () => {
-      const wasOpen = item.classList.contains('dw-open');
-      document.querySelectorAll('.dw-faq__item').forEach(i => i.classList.remove('dw-open'));
-      document.querySelectorAll('.dw-faq__toggle').forEach(tt => tt.textContent = '+');
-      if (!wasOpen) { item.classList.add('dw-open'); t.textContent = '−'; }
+    btn.addEventListener('click', () => {
+        // Close all other open items
+        document.querySelectorAll('.faq-item.open').forEach(sib => {
+            if (sib !== item) {
+                sib.classList.remove('open');
+                sib.querySelector('button').setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Toggle the current item
+        const isOpen = item.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
-  });
+});
+
+// Reveal on scroll
+const reveal = (entries, observer) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.style.transform = 'translateY(0)';
+            e.target.style.opacity = 1;
+            observer.unobserve(e.target);
+        }
+    });
+};
+
+const observer = new IntersectionObserver(reveal, { threshold: 0.12 });
+
+document.querySelectorAll('.info-card, .who-card, .card').forEach(el => {
+    el.style.transform = 'translateY(12px)';
+    el.style.opacity = 0;
+    el.style.transition = 'all .7s cubic-bezier(.1, .7, .1, 1)';
+    observer.observe(el);
+});
+
