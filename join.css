@@ -6,8 +6,8 @@
 }
 
 .career_wrap {
-  max-width: 1200px;
   width: 90%;
+  max-width: none;
   margin: 0 auto;
 }
 

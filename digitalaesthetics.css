@@ -31,6 +31,10 @@
 }
 
 /* Body styles cleaned up to inherit from style.css */
+body {
+  padding-top: 0 !important;
+  /* Override global 80px padding */
+}
 
 /* avoid content hiding behind fixed nav */
 .page-offset {
@@ -421,8 +425,9 @@ a {
   position: relative;
   min-height: 60vh;
   display: flex;
-  align-items: center;
-  padding-top: var(--nav-height);
+  align-items: flex-start;
+  padding-top: calc(var(--nav-height) + 10px);
+  /* Minimal clearance */
   overflow: hidden;
   background: radial-gradient(circle at 50% 50%, rgba(238, 193, 103, 0.08), transparent 60%);
 }
@@ -720,17 +725,55 @@ a {
     align-items: center;
   }
 
+  /* Fix squashed text */
+  .da-hero__title {
+    font-size: clamp(2.2rem, 8vw, 3.5rem);
+  }
+
+  .da-hero__desc {
+    font-size: 1rem;
+    padding: 0 16px;
+    /* Prevent edge-to-edge squash */
+  }
+
   .da-actions {
     justify-content: center;
   }
 
   .da-hero__visual {
-    height: 400px;
-    margin-top: 40px;
+    height: 340px;
+    /* Reduced height */
+    margin-top: 20px;
+    transform: scale(0.85);
+    /* Global scale down for mobile */
   }
 
   .da-about__grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Navbar Fix: Hide Brand text on mobile, keep logo */
+  .pro-nav__brand {
+    display: none;
+  }
+
+  /* Adjust floating elements positions/sizes for mobile */
+  .vis-main {
+    width: 260px;
+    height: 340px;
+  }
+
+  .vis-float-1 {
+    width: 120px;
+    height: 80px;
+    right: -10%;
+  }
+
+  .vis-float-2 {
+    width: 100px;
+    height: 100px;
+    left: -5%;
+    bottom: 5%;
   }
 }
 

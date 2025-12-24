@@ -131,7 +131,8 @@ body {
     justify-content: center;
     position: relative;
     background: radial-gradient(circle at 50% 10%, rgba(191, 149, 63, 0.15) 0%, rgba(5, 5, 5, 0) 70%);
-    padding-top: 80px;
+    padding-top: 120px;
+    padding-bottom: 60px;
 }
 
 .ds-hero__content {
@@ -173,11 +174,10 @@ body {
 }
 
 .ds-btn-glow {
-    display: block;
-    /* Changed from inline-block */
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
+    display: inline-block;
+    width: auto;
+    min-width: 180px;
+    margin: 0 10px 10px 0;
     text-align: center;
     padding: 16px 20px;
     background: linear-gradient(90deg, #f3e3c3, #eec063);
