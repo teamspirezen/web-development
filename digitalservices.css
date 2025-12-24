@@ -4,6 +4,28 @@
    VARIABLES & RESET
    ========================================= */
 :root {
+    /* Global Box Sizing Reset for Consistency */
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+:root {
+    /* Global Box Sizing Reset for Consistency */
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+:root {
     --bg-dark: #050505;
     --bg-card: rgba(255, 255, 255, 0.03);
     --bg-card-hover: rgba(255, 255, 255, 0.07);
@@ -151,14 +173,19 @@ body {
 }
 
 .ds-btn-glow {
-    display: inline-block;
-    padding: 16px 40px;
+    display: block;
+    /* Changed from inline-block */
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 16px 20px;
     background: linear-gradient(90deg, #f3e3c3, #eec063);
     color: black;
     font-weight: 700;
     text-decoration: none;
     border-radius: 50px;
-    box-shadow: 0 0 20px rgba(191, 149, 63, 0.4);
+    box-shadow: 0 5px 20px rgba(191, 149, 63, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     font-size: 1.1rem;
 }
@@ -537,7 +564,7 @@ body {
    ========================================= */
 .ds-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-top: 60px;
 }
@@ -1341,7 +1368,11 @@ body {
 
 /* Button with distinct Glow */
 .ds-btn-glow {
-    padding: 16px 40px;
+    display: block;
+    /* Ensure block level */
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px 20px;
     background: linear-gradient(90deg, #f3e3c3, #eec063);
     color: #000;
     font-weight: 700;
@@ -1349,7 +1380,8 @@ body {
     border-radius: 50px;
     font-size: 1.1rem;
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(191, 149, 63, 0.4);
+    box-shadow: 0 5px 20px rgba(191, 149, 63, 0.3);
+    /* Consistent with first def */
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -1613,5 +1645,20 @@ body {
 
     .ds-hero__visual {
         height: 400px;
+    }
+}
+
+/* Fix for sticky hover on mobile */
+@media (hover: none) and (pointer: coarse),
+(max-width: 900px) {
+    .ds-card:hover {
+        transform: none;
+        box-shadow: none;
+        border-color: var(--border-color);
+        background: var(--bg-card);
+    }
+
+    .ds-card:hover::before {
+        opacity: 0;
     }
 }

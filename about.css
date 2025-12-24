@@ -17,7 +17,6 @@
 
 .container {
   width: 90%;
-  max-width: 1200px;
   margin-inline: auto;
   padding-inline: clamp(16px, 3vw, 28px);
   box-sizing: border-box;
@@ -196,7 +195,6 @@
 .section-mission,
 .section-vision {
   width: 90%;
-  max-width: 95%;
   margin-inline: auto;
   padding-block: clamp(24px, 4vw, 40px);
   box-sizing: border-box;

@@ -32,75 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* ===== GLASS NAV: DROPDOWNS (MOBILE) ===== */
-  const dropdownParents = document.querySelectorAll(".pro-has-dd");
 
-  dropdownParents.forEach((parent) => {
-    const btn = parent.querySelector(".pro-nav__btn");
-    if (!btn) return;
-
-    btn.addEventListener("click", (e) => {
-      const mqDesktop = window.matchMedia("(min-width: 981px)");
-      if (mqDesktop.matches) return; // desktop handled by hover
-
-      e.preventDefault();
-      const isOpen = parent.classList.contains("is-open");
-      dropdownParents.forEach((p) => p.classList.remove("is-open"));
-      if (!isOpen) parent.classList.add("is-open");
-
-      btn.setAttribute("aria-expanded", String(!isOpen));
-    });
-  });
-
-  /* ===== MOBILE SHEET NAV ===== */
-  const hamburger = document.getElementById("proHamburger");
-  const sheet = document.getElementById("proDrawer");
-  const overlay = document.getElementById("proOverlay");
-  const closeBtn = document.getElementById("proClose");
-
-  function openSheet() {
-    if (!sheet || !overlay || !hamburger) return;
-    sheet.classList.add("is-open");
-    overlay.classList.add("is-visible");
-    overlay.hidden = false;
-    hamburger.setAttribute("aria-expanded", "true");
-    sheet.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeSheet() {
-    if (!sheet || !overlay || !hamburger) return;
-    sheet.classList.remove("is-open");
-    overlay.classList.remove("is-visible");
-    hamburger.setAttribute("aria-expanded", "false");
-    sheet.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-    // small delay to allow fade-out before hiding
-    setTimeout(() => {
-      if (!overlay.classList.contains("is-visible")) {
-        overlay.hidden = true;
-      }
-    }, 200);
-  }
-
-  if (hamburger) {
-    hamburger.addEventListener("click", openSheet);
-  }
-
-  if (closeBtn) {
-    closeBtn.addEventListener("click", closeSheet);
-  }
-
-  if (overlay) {
-    overlay.addEventListener("click", closeSheet);
-  }
-
-  // close on escape
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeSheet();
-    }
-  });
 
   /* ===== FOOTER YEAR & BACK TO TOP ===== */
   const yearSpan = document.getElementById("current-year");
