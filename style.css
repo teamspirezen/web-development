@@ -755,13 +755,19 @@ button:focus {
 }
 
 /* footer base */
+/* footer base */
 .footer-container {
-  background: linear-gradient(180deg, #040405 0%, #070707 100%);
+  background: rgba(5, 5, 5, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: #d2d2d2;
   padding: 48px 20px;
   font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   box-sizing: border-box;
   line-height: 1.5;
+  position: relative;
+  z-index: 10;
 }
 
 /* inner centering */

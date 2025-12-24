@@ -483,7 +483,7 @@ p,
   box-shadow: 0 0 20px rgba(217, 168, 74, 0.5);
   transition: height 0.1s linear;
   max-height: 100%;
-  
+
 }
 
 .timeline-item {
@@ -579,7 +579,7 @@ p,
   transition: var(--transition);
   font-family: 'Inter', sans-serif;
   background-color: var(--gold-light);
-  color:black;
+  color: black;
 }
 
 .amun-btn-primary {
@@ -847,8 +847,14 @@ p,
     text-align: center;
   }
 
-  .timeline::before {
-    left: 30px;
+  /* Center the description when text is centered */
+  .amun-desc {
+    margin-inline: auto;
+  }
+
+  .timeline::before,
+  .timeline::after {
+    left: 38px;
   }
 
   .timeline-item {
@@ -859,7 +865,7 @@ p,
 
   .timeline-dot {
     left: -30px !important;
-    
+
   }
 
   .amun-content-card {
@@ -869,7 +875,10 @@ p,
 
   .amun-ctas,
   .amun-form-row {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 1rem;
     width: 100%;
   }
 
