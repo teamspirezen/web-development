@@ -1,125 +1,112 @@
-document.addEventListener("DOMContentLoaded", () => {
-    /* ===== GLASS NAV: DROPDOWNS (MOBILE) ===== */
-    const dropdownParents = document.querySelectorAll(".pro-has-dd");
+(() => {
+  const RZP_KEY_ID = 'rzp_test_Ruk0xr51QvmtpE';
 
-    dropdownParents.forEach((parent) => {
-        const btn = parent.querySelector(".pro-nav__btn");
-        if (!btn) return;
+  const form = document.getElementById('contact-form');
+  const btn = document.getElementById('pay-now-submit-button');
+  const msg = document.getElementById('form-message');
 
-        btn.addEventListener("click", (e) => {
-            const mqDesktop = window.matchMedia("(min-width: 981px)");
-            if (mqDesktop.matches) return; // desktop handled by hover
+  function ui(text) {
+    if (msg) {
+      msg.style.display = text ? 'block' : 'none';
+      msg.textContent = text || '';
+    }
+  }
 
-            e.preventDefault();
-            const isOpen = parent.classList.contains("is-open");
-            dropdownParents.forEach((p) => p.classList.remove("is-open"));
-            if (!isOpen) parent.classList.add("is-open");
+  async function createOrder() {
+    const fd = new FormData(form);
+    fd.append('action', 'createOrder');
 
-            btn.setAttribute("aria-expanded", String(!isOpen));
-        });
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: fd
     });
 
-    /* ===== MOBILE SHEET NAV ===== */
-    /* Logic removed: handled globally by nav.js to prevent conflicts */
+    const data = await res.json();
 
-
-    /* ===== FOOTER YEAR & BACK TO TOP ===== */
-    const yearSpan = document.getElementById("current-year");
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
+    if (data.result !== 'success') {
+      throw new Error(data.error || 'Order creation failed');
     }
 
-    const backToTopBtn = document.querySelector(".back-to-top");
-    if (backToTopBtn) {
-        backToTopBtn.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
+    const o = data.order;
+
+    // ✅ SAFE NORMALIZATION (IMPORTANT FIX)
+    if (!o || !o.id || !o.currency) {
+      throw new Error('Invalid order from server');
     }
 
-    /* ===== FOOTER QUICK LINKS (Handled by footer.js) ===== */
-    /* Logic removed to prevent conflict */
-    /* ===== FAQ ACCORDION ===== */
-    const faqItems = document.querySelectorAll(".dw-faq__item");
+    o.amount = Number(o.amount);
+    if (!Number.isFinite(o.amount) || o.amount <= 0) {
+      throw new Error('Invalid order amount');
+    }
 
-    faqItems.forEach((item) => {
-        const button = item.querySelector(".dw-faq__q");
-        const answer = item.querySelector(".dw-faq__a");
+    o.currency = String(o.currency).toUpperCase();
 
-        if (!button || !answer) return;
+    return o;
+  }
 
-        // set big number text attribute once
-        const num = button.querySelector(".dw-faq__num");
-        if (num && !num.dataset.big) {
-            num.dataset.big = num.textContent.trim();
+  async function verifyPayment(resp) {
+    const fd = new FormData(form);
+    fd.append('action', 'verifyPayment');
+    fd.append('razorpay_order_id', resp.razorpay_order_id);
+    fd.append('razorpay_payment_id', resp.razorpay_payment_id);
+    fd.append('razorpay_signature', resp.razorpay_signature);
+
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: fd
+    });
+
+    const data = await res.json();
+
+    if (data.result !== 'success') {
+      throw new Error(data.error || 'Verification failed');
+    }
+  }
+
+  btn.addEventListener('click', async () => {
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    try {
+      ui('Creating order…');
+
+      const order = await createOrder();
+
+      const rzp = new Razorpay({
+        key: RZP_KEY_ID,
+        order_id: order.id,
+        amount: order.amount,
+        currency: order.currency,
+        name: 'Spirezen Enterprises Pvt Ltd',
+        description: 'Digital Aesthetics Workshop',
+        prefill: {
+          name: form['your-name'].value,
+          email: form['your-email'].value,
+          contact: form['your-number'].value
+        },
+        handler: async resp => {
+          try {
+            ui('Verifying payment…');
+            await verifyPayment(resp);
+            ui('Payment successful! Registration confirmed.');
+            setTimeout(() => location.reload(), 2500);
+          } catch (err) {
+            console.error(err);
+            ui('Payment successful! Confirmation will be sent shortly.');
+          }
+        },
+        modal: {
+          ondismiss: () => ui('Payment cancelled')
         }
+      });
 
-        button.addEventListener("click", () => {
-            const isOpen = item.classList.contains("dw-open");
+      rzp.open();
 
-            // Close all others
-            faqItems.forEach((other) => {
-                if (other !== item) {
-                    other.classList.remove("dw-open");
-                    const btn = other.querySelector(".dw-faq__q");
-                    if (btn) btn.setAttribute("aria-expanded", "false");
-                }
-            });
-
-            // Toggle this one
-            item.classList.toggle("dw-open", !isOpen);
-            button.setAttribute("aria-expanded", String(!isOpen));
-        });
-    });
-
-    /* ===== SCROLL ANIMATIONS (Fade Up) ===== */
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.animationPlayState = "running";
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll(".fade-up").forEach((el) => {
-        el.style.opacity = "0";
-        el.style.animationPlayState = "paused";
-        observer.observe(el);
-    });
-
-    /* ===== TIMELINE SCROLL PROGRESS ===== */
-    const timeline = document.querySelector('.da-timeline');
-    if (timeline) {
-        function updateTimelineProgress() {
-            const rect = timeline.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            // Trigger point: When the section is crossing the middle-to-bottom of viewport
-            // We want it 0% when top of timeline hits trigger, 100% when bottom hits trigger
-            const triggerPoint = windowHeight * 0.75;
-
-            // Logic: 
-            // Distance from top of timeline to trigger point
-            const distanceFromTop = triggerPoint - rect.top;
-
-            // Percentage
-            let progress = distanceFromTop / rect.height;
-
-            // Clamp between 0 and 1
-            progress = Math.min(Math.max(progress, 0), 1);
-
-            timeline.style.setProperty('--scroll-prog', `${progress * 100}%`);
-        }
-
-        window.addEventListener('scroll', updateTimelineProgress, { passive: true });
-        window.addEventListener('resize', updateTimelineProgress, { passive: true });
-        // Initial call
-        updateTimelineProgress();
+    } catch (err) {
+      console.error(err);
+      ui(err.message);
     }
-});
+  });
+})();

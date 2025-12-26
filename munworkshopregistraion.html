@@ -160,50 +160,72 @@
     </div>
   </aside>
 
+<main class="da-reg-page">
   <section class="munterra_form_section">
     <div class="munterra_form_container">
+
+      <!-- Header -->
       <div class="munterra_form_header">
         <h1 class="munterra_form_title">Book your slot for Munterra Workshop</h1>
         <p class="munterra_form_subtitle">Pay ₹499 (+ 2% payment gateway charges).</p>
       </div>
 
-      <form id="contact-form" method="post"
-        action="https://script.google.com/macros/s/AKfycby2ACZwfKKQTSfNmYZUVAwxt-jvFY1xNuUCs0wIiG1ujC8iioEFBcTw-bG_0g-JhqV-TQ/exec"
+      <!-- Form -->
+      <form id="contact-form"
+        method="post"
+        action="https://script.google.com/macros/s/AKfycbwFtMCxnW6fgafX2yG6ABVCiPD7QjaYZedr6AJFmXd1AMl3kCk90N7rM5kywbnKJQi3AQ/exec"
         novalidate>
+
+        <!-- Hidden -->
+        <input type="hidden" name="event_name" value="Munterra Workshop">
+
+        <!-- Grid Inputs -->
         <div class="munterra_form_grid">
-          <input type="hidden" name="event_name" value="Munterra Workshop">
           <input type="text" name="your-name" placeholder="Full Name" required>
-          <input type="number" name="your-age" placeholder="Age" required min="8" max="80">
-          <input type="tel" name="your-number" placeholder="Phone Number (10 digits)" pattern="[0-9]{10}" required>
+          <input type="number" name="your-age" placeholder="Age" min="8" max="80" required>
+          <input type="tel" name="your-number" placeholder="Phone Number (10 digits)" pattern="\d{10}" required>
           <input type="email" name="your-email" placeholder="Email Address" required>
           <input type="text" name="your-city" placeholder="City" required>
           <input type="text" name="your-school" placeholder="School / University" required>
         </div>
 
+        <!-- Session Select -->
         <div class="munterra_form_selectwrap">
           <label for="session-date">Select Session Time</label>
           <select name="session-date" id="session-date" required>
             <option value="" disabled selected>Select Session Date</option>
-            <option value="2025-11-22-18:00">6th December 2025 — 6:00 PM to 9:00 PM IST</option>
+            <option value="2025-12-06 18:00">
+              6th December 2025 — 6:00 PM to 9:00 PM IST
+            </option>
           </select>
-
         </div>
-        <!-- add this above the .munterra_form_cta -->
+
+        <!-- Terms -->
         <div class="munterra_form_terms" style="display:flex;align-items:center;gap:10px;margin-top:8px;">
           <input id="agree-terms" name="agree-terms" type="checkbox" value="Yes" required>
           <label for="agree-terms" style="font-size:0.95rem;color:#efece6;">
-            I accept the <a href="Terms.html" target="_blank" rel="noopener" style="color:#eec063;">Terms &amp;
-              Conditions</a>.
+            I accept the
+            <a href="Terms.html" target="_blank" rel="noopener" style="color:#eec063;">
+              Terms &amp; Conditions
+            </a>.
           </label>
         </div>
 
+        <!-- CTA -->
         <div class="munterra_form_cta">
-          <button type="submit" id="pay-now-submit-button">Pay Now</button>
+          <button type="button" id="pay-now-submit-button">Pay Now</button>
         </div>
 
+        <!-- Message -->
+        <div id="form-message" class="form-message" style="display:none;margin-top:10px;text-align:center;"></div>
 
+      </form>
+
+    </div>
   </section>
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</main>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 
 </body>
