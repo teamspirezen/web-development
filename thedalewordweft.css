@@ -73,7 +73,7 @@ a {
 /* ===== LAYOUT WRAPPER ===== */
 .dw-wrap {
   width: 90%;
-  max-width: 1200px;
+  max-width: 95%;
   margin: 0 auto;
 }
 
@@ -209,7 +209,7 @@ a {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px;
-  max-width: 900px;
+  max-width: 100%;
   margin: 0 auto;
 }
 

@@ -621,11 +621,7 @@ p,
 
 /* Footer styles deferred to global style.css */
 
-.footer-bottom {
-  flex-direction: column;
-  gap: 1rem;
-  text-align: center;
-}
+/* Footer styles deferred to global style.css */
 
 
 
