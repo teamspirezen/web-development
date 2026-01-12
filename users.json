@@ -1,0 +1,82 @@
+[
+    {
+        "email": "akshay.srinivas@spirezenenterprises.com",
+        "passwordHash": "$2b$10$BoQFngg1qV/AA2kQHbxlZeJ12ktdKjyB7DjqT3CzO0cNX7gIKh1/e",
+        "designation": "Web Dev Lead"
+    },
+    {
+        "email": "anika.gupta@spirezenenterprises.com",
+        "passwordHash": "$2b$10$BoQFngg1qV/AA2kQHbxlZeJ12ktdKjyB7DjqT3CzO0cNX7gIKh1/e",
+        "designation": "Marketing Lead"
+    },
+    {
+        "email": "avanthikaa.gajendran@spirezenenterprises.com",
+        "passwordHash": "$2b$10$BoQFngg1qV/AA2kQHbxlZeJ12ktdKjyB7DjqT3CzO0cNX7gIKh1/e",
+        "designation": "Social Media Intern"
+    },
+    {
+        "email": "darsh.desai@spirezenenterprises.com",
+        "passwordHash": "$2b$10$BoQFngg1qV/AA2kQHbxlZeJ12ktdKjyB7DjqT3CzO0cNX7gIKh1/e",
+        "designation": "Outreach"
+    },
+    {
+        "email": "dhanyaa.sri@spirezenenterprises.com",
+        "passwordHash": "$2b$10$yXKdBwSvjz/wO34JZa1JauJ3nwTaeK7NGm67ULGmsUyTPcTFXM.U.",
+        "designation": "PA"
+    },
+    {
+        "email": "mithuna@spirezenenterprises.com",
+        "passwordHash": "$2b$10$BoQFngg1qV/AA2kQHbxlZeJ12ktdKjyB7DjqT3CzO0cNX7gIKh1/e",
+        "designation": "Social Media Intern"
+    },
+    {
+        "email": "naresh.kumars@spirezenenterprises.com",
+        "passwordHash": "$2b$10$j9/2K2YxLkQCTvFt4SVfJupYWdngdi6JkLX4uhuYe80/jAnH1Uuce",
+        "designation": "Social Media Lead"
+    },
+    {
+        "email": "nethra.v@spirezenenterprises.com",
+        "passwordHash": "$2b$10$BoQFngg1qV/AA2kQHbxlZeJ12ktdKjyB7DjqT3CzO0cNX7gIKh1/e",
+        "designation": "HR"
+    },
+    {
+        "email": "nidin.s@spirezenenterprises.com",
+        "passwordHash": "$2b$10$97RSyWcfCKHvRXgqhoDwB.NMSP94OJvKYaTC72wKsEK34REDvvvZq",
+        "designation": "Web Dev Intern"
+    },
+    {
+        "email": "nitinthilak.l@spirezenenterprises.com",
+        "passwordHash": "$2b$10$HrcAmFtJ7XhK7sw35msx2eFQvTlzGdHt7Q98qkJqDwsLLLUT0T4Ha",
+        "designation": "CEO"
+    },
+    {
+        "email": "projects@spirezenenterprises.com",
+        "passwordHash": "$2b$10$BoQFngg1qV/AA2kQHbxlZeJ12ktdKjyB7DjqT3CzO0cNX7gIKh1/e",
+        "designation": "Intern"
+    },
+    {
+        "email": "puja.sree@spirezenenterprises.com",
+        "passwordHash": "$2b$10$BoQFngg1qV/AA2kQHbxlZeJ12ktdKjyB7DjqT3CzO0cNX7gIKh1/e",
+        "designation": "Marketing Intern"
+    },
+    {
+        "email": "sri.rithanya@spirezenenterprises.com",
+        "passwordHash": "$2b$10$BoQFngg1qV/AA2kQHbxlZeJ12ktdKjyB7DjqT3CzO0cNX7gIKh1/e",
+        "designation": "Outreach"
+    },
+    {
+        "email": "girikarnika.s@spirezenenterprises.com",
+        "passwordHash": "$2b$10$BoQFngg1qV/AA2kQHbxlZeJ12ktdKjyB7DjqT3CzO0cNX7gIKh1/e",
+        "designation": "HR"
+    },
+    {
+        "email": "jaishree@spirezenenterprises.com",
+        "passwordHash": "$2b$10$Qv1RVutirqLB1D.RFIN1GOFbsFIMTIS2C8B2RdEKH2Araw6fg8JpC",
+        "designation": "PA"
+    },
+    {
+        "email": "tavisi.agarwal@spirezenenterprises.com",
+        "passwordHash": "$2b$10$BoQFngg1qV/AA2kQHbxlZeJ12ktdKjyB7DjqT3CzO0cNX7gIKh1/e",
+        "designation": "CPO"
+    }
+]
