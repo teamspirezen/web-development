@@ -62,6 +62,7 @@ app.post('/login', async (req, res) => {
     if (match) {
         req.session.user = {
             email: user.email,
+            name: user.name,
             designation: user.designation
         };
         return res.redirect('/dashboard');
@@ -94,7 +95,7 @@ app.get('/standup', (req, res) => {
         const userInfoHtml = `
             <div class="user-info-display" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1); text-align: left;">
                 <p style="margin: 0; color: #eec063; font-weight: 600; font-family: 'Poppins', sans-serif;">Logged in as:</p>
-                <p style="margin: 5px 0 0; color: #fff; font-size: 1.1em;">${req.session.user.email}</p>
+                <p style="margin: 5px 0 0; color: #fff; font-size: 1.1em;">${req.session.user.name}</p>
                 <p style="margin: 5px 0 0; color: #aaa; font-size: 0.9em; font-style: italic;">${req.session.user.designation}</p>
             </div>
         `;
@@ -120,7 +121,7 @@ app.post('/standup', async (req, res) => {
     const entry = `
 ---------------------------------------------------
 Date: ${date}
-User: ${user.email} (${user.designation})
+User: ${user.name} (${user.designation})
 Submission Time: ${new Date().toLocaleString()}
 
 1. Completed Yesterday:
@@ -144,7 +145,7 @@ ${blockers}
         if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
             await axios.post(GOOGLE_SCRIPT_URL, {
                 date: date,
-                user: `${user.email} (${user.designation})`,
+                user: `${user.name} (${user.designation})`,
                 completed: completed,
                 working_on: working_on,
                 blockers: blockers
@@ -268,7 +269,7 @@ app.get('/leave', (req, res) => {
         const userInfoHtml = `
             <div class="user-info-display" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1); text-align: left;">
                 <p style="margin: 0; color: #eec063; font-weight: 600; font-family: 'Poppins', sans-serif;">Logged in as:</p>
-                <p style="margin: 5px 0 0; color: #fff; font-size: 1.1em;">${req.session.user.email}</p>
+                <p style="margin: 5px 0 0; color: #fff; font-size: 1.1em;">${req.session.user.name}</p>
             </div>
         `;
         res.send(html.replace('<!-- USER_INFO_PLACEHOLDER -->', userInfoHtml));
@@ -282,8 +283,8 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'akshayhari14126@gmail.com',  // Replace with your personal gmail
-        pass: 'kkpw gzrm gzzu gypd'      // Replace with your App Password
+        user: 'teamspirezen@gmail.com',  // Replace with your personal gmail
+        pass: 'mism jtei tygy wxsr'      // Replace with your App Password
     }
 });
 
@@ -300,7 +301,8 @@ app.post('/leave', async (req, res) => {
         to: 'tgnascorp714@gmail.com', // The specific mail you mentioned
         subject: `LEAVE REQUEST: ${subject} - ${user.email}`,
         text: `
-        Name/Email: ${user.email} (${user.designation})
+        Name: ${user.name} (${user.designation})
+        Email: ${user.email}
         Date Requested: ${date}
         
         Message:
