@@ -544,3 +544,73 @@ p {
     outline: 2px solid var(--gold);
     outline-offset: 4px;
 }
+
+/* CREATIVE LEARN SECTION */
+.learn-split {
+    display: grid;
+    gap: 60px;
+    align-items: center;
+}
+
+@media (min-width: 980px) {
+    .learn-split {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.learn-visual {
+    position: relative;
+    height: 500px;
+    /* Adjust based on image needs */
+    width: 100%;
+}
+
+.learn-visual img {
+    position: absolute;
+    border-radius: 20px;
+    box-shadow: -20px 20px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+    object-fit: cover;
+}
+
+.learn-visual img:hover {
+    transform: scale(1.02);
+    box-shadow: -25px 25px 70px rgba(0, 0, 0, 0.6);
+    z-index: 10;
+}
+
+/* Back Image */
+.learn-img-1 {
+    top: 0;
+    right: 0;
+    width: 70%;
+    /* Slightly smaller to distinguish */
+    height: 300px;
+    z-index: 1;
+    opacity: 1;
+    /* Removed transparency */
+    transform: rotate(3deg);
+    /* Subtle tilt for creativity */
+}
+
+/* Front Image */
+.learn-img-2 {
+    bottom: 20px;
+    left: 0;
+    width: 75%;
+    height: 320px;
+    z-index: 2;
+    transform: rotate(-2deg);
+    /* Counter tilt */
+    border: 4px solid rgba(255, 255, 255, 0.05);
+    /* Premium border */
+}
+
+/* Responsive adjustments */
+@media (max-width: 980px) {
+    .learn-visual {
+        height: 600px;
+        margin-top: 40px;
+    }
+}

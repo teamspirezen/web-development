@@ -63,50 +63,78 @@
     }
   }
 
-  btn.addEventListener('click', async () => {
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
+  if (btn && form) {
+    btn.addEventListener('click', async () => {
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
 
-    try {
-      ui('Creating order…');
+      try {
+        ui('Creating order…');
 
-      const order = await createOrder();
+        const order = await createOrder();
 
-      const rzp = new Razorpay({
-        key: RZP_KEY_ID,
-        order_id: order.id,
-        amount: order.amount,
-        currency: order.currency,
-        name: 'Spirezen Enterprises Pvt Ltd',
-        description: 'Digital Aesthetics Workshop',
-        prefill: {
-          name: form['your-name'].value,
-          email: form['your-email'].value,
-          contact: form['your-number'].value
-        },
-        handler: async resp => {
-          try {
-            ui('Verifying payment…');
-            await verifyPayment(resp);
-            ui('Payment successful! Registration confirmed.');
-            setTimeout(() => location.reload(), 2500);
-          } catch (err) {
-            console.error(err);
-            ui('Payment successful! Confirmation will be sent shortly.');
+        const rzp = new Razorpay({
+          key: RZP_KEY_ID,
+          order_id: order.id,
+          amount: order.amount,
+          currency: order.currency,
+          name: 'Spirezen Enterprises Pvt Ltd',
+          description: 'Digital Aesthetics Workshop',
+          prefill: {
+            name: form['your-name'].value,
+            email: form['your-email'].value,
+            contact: form['your-number'].value
+          },
+          handler: async resp => {
+            try {
+              ui('Verifying payment…');
+              await verifyPayment(resp);
+              ui('Payment successful! Registration confirmed.');
+              setTimeout(() => location.reload(), 2500);
+            } catch (err) {
+              console.error(err);
+              ui('Payment successful! Confirmation will be sent shortly.');
+            }
+          },
+          modal: {
+            ondismiss: () => ui('Payment cancelled')
           }
-        },
-        modal: {
-          ondismiss: () => ui('Payment cancelled')
-        }
-      });
+        });
 
-      rzp.open();
+        rzp.open();
 
-    } catch (err) {
-      console.error(err);
-      ui(err.message);
-    }
+      } catch (err) {
+        console.error(err);
+        ui(err.message);
+      }
+    });
+  }
+
+  /* FAQ Logic */
+  const faqQuestions = document.querySelectorAll('.dw-faq__q');
+  faqQuestions.forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('dw-open');
+
+      // Optional: Close others (accordion style)
+      // const allItems = document.querySelectorAll('.dw-faq__item');
+      // allItems.forEach(i => {
+      //     i.classList.remove('dw-open');
+      //     const btn = i.querySelector('.dw-faq__q');
+      //     if(btn) btn.setAttribute('aria-expanded', 'false');
+      // });
+
+      if (!isOpen) {
+        item.classList.add('dw-open');
+        q.setAttribute('aria-expanded', 'true');
+      } else {
+        item.classList.remove('dw-open');
+        q.setAttribute('aria-expanded', 'false');
+      }
+    });
   });
+
 })();
