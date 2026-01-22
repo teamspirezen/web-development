@@ -220,3 +220,41 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     color: #666;
     margin-top: 4px;
 }
+
+/* Back Button */
+/* Back Button - Enhanced */
+.btn-back {
+    display: block;
+    margin-top: 15px;
+    width: 100%;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    /* Slight fill */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    /* Bolder */
+    color: #ffffff;
+    /* Brighter */
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.btn-back:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #eec063;
+    /* Gold border on hover */
+    color: #eec063;
+    /* Gold text on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-back:active {
+    transform: translateY(0);
+}

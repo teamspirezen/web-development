@@ -5,27 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Spirezen Enterprises.</title>
+    <title>Munterra MasterClass - Spirezen Enterprises</title>
     <link rel="icon" type="image/x-icon" href="logo.svg">
-    <link rel="stylesheet" type="text/css" target="_blank" href="style.css">
-    <link rel="stylesheet" type="text/css" target="_blank" href="indexstyle.css">
+    <!-- Base Styles -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="indexstyle.css">
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- New Premium Styles -->
     <link rel="stylesheet" href="munworkshop.css">
-
 </head>
 
 <body>
-    <!-- NAVBAR -->
+    <!-- CONTACT NAVBAR (Reusing existing component structure) -->
     <nav class="pro-nav" aria-label="Primary Navigation">
         <div class="pro-nav__inner">
-            <!-- LEFT: Brand -->
             <a href="index.html" class="pro-nav__brand" aria-label="Spirezen Home">SPIREZEN</a>
-
-            <!-- CENTER: Menu (desktop) -->
             <ul class="pro-nav__menu" role="menubar">
                 <li role="none"><a role="menuitem" class="pro-nav__link" href="index.html">Home</a></li>
-
                 <li class="pro-has-dd" role="none">
                     <button class="pro-nav__link pro-nav__btn" aria-haspopup="true" aria-expanded="false">
                         Courses
@@ -36,10 +34,8 @@
                     <div class="pro-dd" role="menu">
                         <a class="pro-dd__link" role="menuitem" href="munworkshop.html">Munterra</a>
                         <a class="pro-dd__link" role="menuitem" href="digitalaesthetics.html">Digital Aesthetics </a>
-                        <a class="pro-dd__link" role="menuitem" href="#">Comming soon</a>
                     </div>
                 </li>
-
                 <li class="pro-has-dd" role="none">
                     <button class="pro-nav__link pro-nav__btn" aria-haspopup="true" aria-expanded="false">
                         Services
@@ -52,7 +48,6 @@
                         <a class="pro-dd__link" role="menuitem" href="digitalservices.html">thedalediginova</a>
                     </div>
                 </li>
-
                 <li class="pro-has-dd" role="none">
                     <button class="pro-nav__link pro-nav__btn" aria-haspopup="true" aria-expanded="false">
                         Portfolio
@@ -66,9 +61,7 @@
                         <a class="pro-dd__link" role="menuitem" href="digitalservices.html">thedalediginova</a>
                     </div>
                 </li>
-
                 <li role="none"><a role="menuitem" class="pro-nav__link" href="about.html">About Us</a></li>
-
                 <li class="pro-has-dd" role="none">
                     <button class="pro-nav__link pro-nav__btn" aria-haspopup="true" aria-expanded="false">
                         Get in touch
@@ -82,13 +75,9 @@
                     </div>
                 </li>
             </ul>
-
-            <!-- RIGHT: Logo -->
             <a href="index.html" class="pro-nav__logoWrap" aria-label="Spirezen Home">
                 <img src="logo.svg" alt="" class="pro-nav__logo" />
             </a>
-
-            <!-- Mobile trigger -->
             <button class="pro-hamburger" id="proHamburger" aria-label="Open menu" aria-controls="proDrawer"
                 aria-expanded="false">
                 <span></span><span></span><span></span>
@@ -96,12 +85,8 @@
         </div>
         <div class="pro-underline" aria-hidden="true"></div>
     </nav>
-
-    <!-- ===== Overlay & Bottom Sheet MUST be direct children of <body> ===== -->
     <div class="pro-overlay" id="proOverlay" hidden></div>
-
     <aside class="pro-sheet" id="proDrawer" aria-hidden="true" aria-label="Mobile Menu">
-        <!-- Top bar for drag + close -->
         <div class="pro-sheet__head">
             <div class="pro-sheet__brand">
                 <img src="logo.svg" class="pro-sheet__logo" alt="">
@@ -110,21 +95,15 @@
             <button id="proClose" class="pro-sheet__close" aria-label="Close menu">✕</button>
         </div>
         <div class="pro-sheet__handle" aria-hidden="true"></div>
-
-        <!-- Menu Body -->
         <nav class="pro-sheet__body" role="menu">
-            <!-- ✅ Home first -->
             <a class="pro-sheet__item" href="index.html" role="menuitem">Home</a>
-
             <details class="pro-sheet__acc" role="none">
                 <summary class="pro-sheet__item" role="menuitem" aria-haspopup="true">Courses</summary>
                 <div class="pro-sheet__panel">
                     <a class="pro-sheet__sub" href="munworkshop.html">Munterra</a>
                     <a class="pro-sheet__sub" href="digitalaesthetics.html">Digital Aesthetics </a>
-                    <a class="pro-sheet__sub" href="#">Comming soon</a>
                 </div>
             </details>
-
             <details class="pro-sheet__acc" role="none">
                 <summary class="pro-sheet__item" role="menuitem" aria-haspopup="true">Services</summary>
                 <div class="pro-sheet__panel">
@@ -132,18 +111,15 @@
                     <a class="pro-sheet__sub" href="digitalservices.html">thedalediginova</a>
                 </div>
             </details>
-
             <details class="pro-sheet__acc" role="none">
                 <summary class="pro-sheet__item" role="menuitem" aria-haspopup="true">Portfolio</summary>
                 <div class="pro-sheet__panel">
                     <a class="pro-sheet__sub" href="thedalemunclub.html">thedalemun</a>
                     <a class="pro-sheet__sub" href="thedalewordweft.html">thedalewordweft</a>
-                    <a class="pro-sheet__sub" href="digitalservices.html">thedalediginova</a>
+                    <a class="pro-dd__link" role="menuitem" href="digitalservices.html">thedalediginova</a>
                 </div>
             </details>
-
             <a class="pro-sheet__item" href="about.html" role="menuitem">About Us</a>
-
             <details class="pro-sheet__acc" role="none">
                 <summary class="pro-sheet__item" role="menuitem" aria-haspopup="true">Get in touch</summary>
                 <div class="pro-sheet__panel">
@@ -152,8 +128,6 @@
                 </div>
             </details>
         </nav>
-
-        <!-- Footer -->
         <div class="pro-sheet__footer">
             <a href="mailto:hello@spirezen.com" class="footer-link"> spirecare@spirezenenterprises.com</a>
             <div class="footer-links">
@@ -164,183 +138,290 @@
         </div>
     </aside>
 
-    <div class="site-wrap" aria-label="Munterra workshop section">
+
+    <div class="site-wrap">
         <div class="site-inner">
 
-            <!-- Hero -->
-            <section class="hero fade-up" aria-labelledby="mun-hero-title">
+            <!-- 1. HERO SECTION: "Inside the Hall" -->
+            <section class="hero fade-up">
                 <div class="hero-left">
-                    <span class="kicker" aria-hidden="true"><i class="fas fa-users-gear" style="margin-right:8px"></i>
-                        Cohort · Expert-Led · 3 Hours</span>
+                    <div class="kicker"><i class="fas fa-landmark"></i> Munterra MasterClass</div>
+                    <h1>Step Inside <br><span class="accent">The Conference Hall</span></h1>
+                    <p class="lead">From first speech to final resolution — experience the rush of global diplomacy in
+                        an expert-led, immersive masterclass.</p>
 
-                    <h1 id="mun-hero-title">Explore MUN with<br><span class="accent">Expert-Led Munterra
-                            MasterClass</span></h1>
-                    <p class="lead">Cultivating future diplomats from First League to Final Resolution through research,
-                        diplomacy and real-world committee flow.</p>
+                    <!-- Feature Pills -->
+                    <div class="hero-pills">
+                        <div class="h-pill"><i class="fas fa-microphone-alt"></i> Public Speaking</div>
+                        <div class="h-pill"><i class="fas fa-gavel"></i> Rules of Procedure</div>
+                        <div class="h-pill"><i class="fas fa-handshake"></i> Negotiation</div>
+                        <div class="h-pill"><i class="fas fa-file-signature"></i> Drafting</div>
+                    </div>
 
-                    <ul class="features" aria-hidden="false">
-                        <li><i class="fas fa-magnifying-glass"></i> Research toolkit & briefing templates</li>
-                        <li><i class="fas fa-gavel"></i> Rules of Procedure + motion flow</li>
-                        <li><i class="fas fa-microphone-lines"></i> Speech & negotiation drills</li>
-                    </ul>
+                    <!-- Trust Signals -->
+                    <div class="trust-row">
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span><strong>4.8/5</strong> Student Rating</span>
+                        <span style="opacity:0.5">|</span>
+                        <span><i class="fas fa-certificate" style="color:var(--gold)"></i> Certified</span>
+                    </div>
 
-                    <div class="cta-row" role="group" aria-label="Primary actions">
-                        <a class="btn btn-primary" href="munworkshopregistraion.html">Register now · ₹499</a>
-                        <a class="btn btn-ghost" href="#faq">View FAQ</a>
+                    <div style="margin-top: 40px; display:flex; gap:16px; flex-wrap:wrap;">
+                        <a href="#pricing" class="btn btn-primary">Claim Your Seat — ₹499</a>
+                        <button class="btn btn-ghost"
+                            onclick="document.getElementById('cinematic').scrollIntoView({behavior:'smooth'})">See How
+                            It Works</button>
                     </div>
                 </div>
 
-                <aside class="hero-right" aria-label="Enrollment card">
-                    <section class="card" role="region" aria-labelledby="card-title">
-                        <span class="tag">Online</span>
-                        <h3 id="card-title">Munterra — the ultimate MUN masterclass</h3>
-                        <p>Live · 6:00 PM – 9:00 PM (Online)</p>
-                        <p>Hands-on MUN simulations • Exclusive mentor Q&A sessions • E-certificate for participants</p>
+                <!-- 3D Visual Stack -->
+                <div class="hero-right hero-visual">
+                    <!-- Layer 1: Background Blur (Committee Session) -->
+                    <img src="Cit mun session .svg" class="parallax-layer layer-back" data-speed="2"
+                        alt="Committee Blur">
 
-                        <div class="price" aria-hidden="false">
-                            ₹499
-                            <span>Only 80 seats · Enroll Now</span>
+                    <!-- Layer 2: Main Focus (Speaker) -->
+                    <img src="Agaram session image.png" class="parallax-layer layer-main" data-speed="5"
+                        alt="Delegate Speaking">
+
+                    <!-- Layer 3: Floating Element (Gavel/Logo) -->
+                    <div class="parallax-layer layer-float" data-speed="8">
+                        <div style="display:flex; gap:12px; align-items:center;">
+                            <img src="Mun workshop logo.svg" width="40" alt="Icon">
+                            <span style="font-weight:700; color:#fff; font-size:0.9rem;">LIVE SESSION<br><span
+                                    style="color:var(--gold)">CONNECTING...</span></span>
                         </div>
-
-                        <!-- Optional image: replace src with your image path if desired -->
-                        <img src="Mun workshop logo.svg" alt="Munterra Logo"
-                            style="width:100px; display:block; margin: 0 auto 16px; opacity:0.8;">
-
-                        <div class="btn-outer">
-                            <a class="btn btn-dark claim" href="munworkshopregistraion.html">Claim your seat</a>
-                        </div>
-                    </section>
-                </aside>
+                    </div>
+                </div>
             </section>
 
-            <!-- What you'll learn -->
-            <section class="section fade-up" id="learn" aria-labelledby="learn-title">
-                <div class="learn-split">
-                    <div class="learn-content">
-                        <h2 id="learn-title" style="margin-bottom:32px">What You'll Learn</h2>
-                        <div class="grid" role="list" style="margin-top:0">
-                            <div class="info-card" role="listitem">
-                                <div class="title">MUN Procedures A–Z</div>
-                                <p>Learn the complete flow of MUNs — committee structure, motions, points, and more.</p>
-                            </div>
 
-                            <div class="info-card" role="listitem">
-                                <div class="title">Public Speaking & Confidence</div>
-                                <p>Enhance your speaking skills, build stage confidence, and sharpen your delivery.</p>
-                            </div>
+            <!-- 2. JOURNEY FLOW (Timeline) -->
+            <section class="section fade-up">
+                <h2>Your Diplomatic <span class="accent">Journey</span></h2>
+                <div class="journey-track">
+                    <!-- Step 1 -->
+                    <div class="journey-step">
+                        <div class="step-number">01</div>
+                        <div class="step-icon"><i class="fas fa-search"></i></div>
+                        <h3 class="step-title">Research Methodology</h3>
+                        <p style="font-size:0.9rem">Master the art of country matrix analysis and position paper
+                            drafting. Know your policy better than the opposition.</p>
+                    </div>
 
-                            <div class="info-card" role="listitem">
-                                <div class="title">Research & Drafting</div>
-                                <p>Understand position paper writing, resolution drafting and advanced research
-                                    techniques.</p>
-                            </div>
+                    <!-- Step 2 -->
+                    <div class="journey-step">
+                        <div class="step-number">02</div>
+                        <div class="step-icon"><i class="fas fa-book-open"></i></div>
+                        <h3 class="step-title">Rules of Procedure</h3>
+                        <p style="font-size:0.9rem">Navigate the complex flow of motions, points, and caucuses. Turn the
+                            rules into your strategic weapon.</p>
+                    </div>
 
-                            <div class="info-card" role="listitem">
-                                <div class="title">Mentor Interaction</div>
-                                <p>Get guidance directly from experienced trainers through live sessions and Q&As.</p>
+                    <!-- Step 3 -->
+                    <div class="journey-step">
+                        <div class="step-number">03</div>
+                        <div class="step-icon"><i class="fas fa-bullhorn"></i></div>
+                        <h3 class="step-title">Speech & rhetoric</h3>
+                        <p style="font-size:0.9rem">Command the room. Learn vocal modulation, stance, and rhetoric to
+                            deliver speeches that demand attention.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="journey-step">
+                        <div class="step-number">04</div>
+                        <div class="step-icon"><i class="fas fa-file-contract"></i></div>
+                        <h3 class="step-title">Drafting & Voting</h3>
+                        <p style="font-size:0.9rem">The endgame. Lead the bloc, draft the resolution, and secure the
+                            votes for final passage.</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- 3. CINEMATIC "STEP INSIDE" -->
+            <section class="cinematic scroll-reveal" id="cinematic">
+                <div class="cine-grid">
+                    <div class="cine-visual">
+                        <img src="Pem Orientation Session .svg" alt="Live Session">
+                        <div class="play-overlay">
+                            <!-- Placeholder for video modal trigger -->
+                            <div class="play-btn"><i class="fas fa-play"></i></div>
+                        </div>
+                    </div>
+                    <div class="cine-content">
+                        <span style="color:var(--gold); font-weight:700; letter-spacing:0.1em; margin-bottom:16px;">LIVE
+                            SIMULATION</span>
+                        <h3 style="font-size:2rem; margin-bottom:24px;">Experience the Pressure. <br>Without the Risk.
+                        </h3>
+                        <p style="margin-bottom:32px;">This isn't just a lecture. It's a safe space to fail, learn, and
+                            grow before you step into a real conference.</p>
+
+                        <ul class="check-list" style="padding:0; list-style:none;">
+                            <li><i class="fas fa-check"></i> Real-time Crisis Updates</li>
+                            <li><i class="fas fa-check"></i> Moderated Caucuses</li>
+                            <li><i class="fas fa-check"></i> Instant Feedback from Chairs</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- 4. MEET THE MENTORS -->
+            <section class="section fade-up">
+                <div style="text-align:center; max-width:800px; margin:0 auto;">
+                    <h2>Learn From The <span class="accent">Chairs</span></h2>
+                    <p>Your mentors aren't just teachers — they are award-winning delegates and experienced Executive
+                        Board members.</p>
+                </div>
+
+                <div class="mentor-grid">
+                    <!-- Mentor 1 -->
+                    <div class="mentor-card">
+                        <img src="Nitin2.svg" class="mentor-img" alt="Mentor">
+                        <span class="mentor-role">Secretary General</span>
+                        <div class="mentor-name">Nitin</div>
+                        <p style="font-size:0.9rem; color:#aaa">Expertise: UNSC & Crisis Committees. <br>40+ MUNs
+                            Experience.</p>
+                    </div>
+
+                    <!-- Mentor 2 -->
+                    <div class="mentor-card">
+                        <img src="Thaanya.svg" class="mentor-img" alt="Mentor">
+                        <span class="mentor-role">Director General</span>
+                        <div class="mentor-name">Thaanya</div>
+                        <p style="font-size:0.9rem; color:#aaa">Expertise: UNHRC & Drafting. <br>Best Delegate Awardee.
+                        </p>
+                    </div>
+
+                    <!-- Mentor 3 -->
+                    <div class="mentor-card">
+                        <img src="Sudharson.svg" class="mentor-img" alt="Mentor">
+                        <span class="mentor-role">Head of Training</span>
+                        <div class="mentor-name">Sudharson</div>
+                        <p style="font-size:0.9rem; color:#aaa">Expertise: Public Speaking & Logic. <br>Trainer for 500+
+                            students.</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- 5. SOCIAL PROOF (Testimonials) -->
+            <section class="section fade-up">
+                <div class="testimonials-wrap">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+
+                    <div class="testimonial-slide active">
+                        <p class="test-text">"I was terrified of public speaking. Munterra didn't just teach me rules;
+                            it gave me the confidence to stand up and speak. At my first MUN, I won High Commendation!"
+                        </p>
+                        <div class="test-author">
+                            <h4>Rohan K.</h4>
+                            <span style="color:var(--gold); font-size:0.9rem;">Grade 11 Student</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-slide">
+                        <p class="test-text">"The way they simplified Research was a game changer. I used their exact
+                            position paper template and the Chair was impressed."</p>
+                        <div class="test-author">
+                            <h4>Ananya S.</h4>
+                            <span style="color:var(--gold); font-size:0.9rem;">College Freshman</span>
+                        </div>
+                    </div>
+
+                    <div class="carousel-nav">
+                        <button class="carousel-btn carousel-prev"><i class="fas fa-arrow-left"></i></button>
+                        <button class="carousel-btn carousel-next"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- 6. PRICING & FINAL CTA -->
+            <section class="section" id="pricing">
+                <div class="pricing-grid">
+                    <!-- Details Card -->
+                    <div class="price-card">
+                        <h3 style="color:var(--muted)">Session Details</h3>
+                        <div style="margin-top:24px; display:grid; gap:16px;">
+                            <div style="display:flex; gap:12px; align-items:center;">
+                                <i class="fas fa-calendar" style="color:var(--gold)"></i>
+                                <span>Upcoming Weekend</span>
+                            </div>
+                            <div style="display:flex; gap:12px; align-items:center;">
+                                <i class="fas fa-clock" style="color:var(--gold)"></i>
+                                <span>6:00 PM – 9:00 PM</span>
+                            </div>
+                            <div style="display:flex; gap:12px; align-items:center;">
+                                <i class="fas fa-video" style="color:var(--gold)"></i>
+                                <span>Live on Google Meet</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="learn-visual">
-                        <img src="Cit mun session .svg" class="learn-img-1" alt="CIT Session">
-                        <img src="Pem Orientation Session .svg" class="learn-img-2" alt="PEM Orientation">
+                    <!-- Pricing Card -->
+                    <div class="price-card featured">
+                        <span
+                            style="background:var(--gold); color:#000; padding:4px 12px; border-radius:4px; font-weight:700; font-size:0.8rem; text-transform:uppercase;">Limited
+                            Offer</span>
+                        <div class="price-big">₹499 <span>/ student</span></div>
+                        <p>Unlock the full 3-hour masterclass, resources, and certificate.</p>
+
+                        <a href="munworkshopregistraion.html" class="btn btn-primary" style="width:100%">Secure My
+                            Spot</a>
+
+                        <div id="countdown-timer" class="timer-box">
+                            <!-- JS will inject timer here -->
+                            Loading Timer...
+                        </div>
+                    </div>
+
+                    <!-- Benefits Card -->
+                    <div class="price-card">
+                        <h3 style="color:var(--muted)">What's Included</h3>
+                        <ul class="check-list" style="margin-top:24px; padding:0; list-style:none;">
+                            <li><i class="fas fa-check"></i> Live Interactive Training</li>
+                            <li><i class="fas fa-check"></i> Research Toolkit PDF</li>
+                            <li><i class="fas fa-check"></i> Position Paper Templates</li>
+                            <li><i class="fas fa-check"></i> Spirezen E-Certificate</li>
+                        </ul>
                     </div>
                 </div>
             </section>
 
-            <!-- Who -->
-            <section class="section fade-up" id="who" aria-labelledby="who-title">
-                <h2 id="who-title">Who Is This MasterClass For?</h2>
-                <div class="who-grid">
-                    <article class="who-card" role="article">
-                        <div class="pill pill--begin">Begin</div>
-                        <h3>First-Time Delegates</h3>
-                        <p>Perfect for students new to Model UN who want to build a strong foundation in procedures,
-                            diplomacy, and public speaking.</p>
-                    </article>
 
-                    <article class="who-card" role="article">
-                        <div class="pill pill--grow">Grow</div>
-                        <h3>Aspiring MUNers</h3>
-                        <p>Ideal for participants with some experience who want to sharpen debating, research, and
-                            resolution-writing skills.</p>
-                    </article>
-
-                    <article class="who-card" role="article">
-                        <div class="pill pill--level-up">Level Up</div>
-                        <h3>Experienced Delegates</h3>
-                        <p>This tier is designed for those aiming to refine leadership, bloc-building, and chairing
-                            abilities to excel at higher-level conferences. Students from Grade 1 through 6 and college
-                            students are welcome to join.</p>
-                    </article>
-                </div>
-            </section>
-
-            <!-- CTA -->
-            <section class="section cta-section fade-up" aria-labelledby="cta-title">
-                <div>
-                    <h2 id="cta-title">Ready to Get Started?</h2>
-                    <p style="color:var(--muted);max-width:48ch;margin-top:10px">Join the next live MasterClass & unlock
-                        your MUN advantage.</p>
-                </div>
-                <div>
-                    <a class="btn btn-primary" id="register" href="munworkshopregistraion.html">Enroll now · ₹199</a>
-                </div>
-            </section>
-
-            <!-- FAQ -->
-            <section class="section fade-up" id="faq" aria-labelledby="faq-title">
-                <h2 id="faq-title">Frequently Asked Questions</h2>
-                <div class="faq-list" id="faq-list">
-
-                    <div class="faq-item" aria-expanded="false">
-                        <div style="display:flex;align-items:center">
+            <!-- FAQ (Simplified) -->
+            <section class="section fade-up section-faq">
+                <h2 style="text-align:center">Common Questions</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div>
                             <div class="number">01</div>
-                            <button aria-controls="faq1" aria-expanded="false">What is Munterra?</button>
+                            <button aria-expanded="false">Do I need prior experience?</button>
                         </div>
-                        <div id="faq1" class="faq-answer">Munterra is a beginner-to-intermediate MUN workshop focused on
-                            core MUN skills — research, resolution drafting and public speaking — led by experienced
-                            mentors.</div>
+                        <div class="faq-answer">None at all. This workshop is designed to take you from zero to
+                            delegate-ready.</div>
                     </div>
-
-                    <div class="faq-item" aria-expanded="false">
-                        <div style="display:flex;align-items:center">
+                    <div class="faq-item">
+                        <div>
                             <div class="number">02</div>
-                            <button aria-controls="faq2" aria-expanded="false">Do I need to reserve my spot in
-                                advance?</button>
+                            <button aria-expanded="false">Is the certificate valid?</button>
                         </div>
-                        <div id="faq2" class="faq-answer">Yes — seats are limited. Reserve your slot to secure access to
-                            live sessions and resources.</div>
+                        <div class="faq-answer">Yes, you will receive a verified e-certificate from Spirezen
+                            Enterprises, recognized by our partner institutions.</div>
                     </div>
-
-                    <div class="faq-item" aria-expanded="false">
-                        <div style="display:flex;align-items:center">
+                    <div class="faq-item">
+                        <div>
                             <div class="number">03</div>
-                            <button aria-controls="faq3" aria-expanded="false">Are refunds available?</button>
+                            <button aria-expanded="false">What if I miss the live session?</button>
                         </div>
-                        <div id="faq3" class="faq-answer">Refunds follow our policy. Contact support for more details.
-                        </div>
+                        <div class="faq-answer">We recommend attending live for the interaction, but a recording will be
+                            available for 48 hours post-session.</div>
                     </div>
-
-                    <div class="faq-item" aria-expanded="false">
-                        <div style="display:flex;align-items:center">
-                            <div class="number">04</div>
-                            <button aria-controls="faq4" aria-expanded="false">What skills will I gain?</button>
-                        </div>
-                        <div id="faq4" class="faq-answer">Research, public speaking, drafting, committee strategy &
-                            more.</div>
-                    </div>
-
-                    <div class="faq-item" aria-expanded="false">
-                        <div style="display:flex;align-items:center">
-                            <div class="number">05</div>
-                            <button aria-controls="faq5" aria-expanded="false">Who can join?</button>
-                        </div>
-                        <div id="faq5" class="faq-answer">Anyone interested in debate, diplomacy, public speaking — no
-                            prior experience needed.</div>
-                    </div>
-
                 </div>
             </section>
 
@@ -348,10 +429,7 @@
     </div><!-- .site-wrap -->
 
 
-
-
-    <!-- ===== GLASS FOOTER ===== -->
-    <!-- ===== GLASS FOOTER ===== -->
+    <!-- FOOTER -->
     <footer class="footer-container" aria-labelledby="footer-heading">
         <h2 id="footer-heading" class="visually-hidden">Site Footer</h2>
 
@@ -435,13 +513,10 @@
     </footer>
 
 
+    <!-- SCRIPTS -->
     <script src="nav.js"></script>
     <script src="footer.js"></script>
-    <script src="index.js"></script>
-    <script src="script.js"></script>
-    <script src="indeximg.js"></script>
-    <script src="testi.js"></script>
-    <script src="cardscript.js"></script>
+    <script src="munworkshop.js"></script> <!-- New Interaction Script -->
     <script src="https://cdn-in.pagesense.io/js/60056259301/13f70b01514e472b96a252ee37209a38.js"></script>
 </body>
 
