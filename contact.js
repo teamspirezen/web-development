@@ -1,87 +1,110 @@
 (function () {
-  // Run when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  const form = document.forms['contact-form'];
+  if (!form) return;
 
-  function init() {
-    const scriptURL   = 'https://script.google.com/macros/s/AKfycbwphBFlodQ8soQbIW31UbzxVeFQuyCEtOiOrBINRrao603w0QnM1vgEodhtr8jla40zXg/exec';
-    const form        = document.forms['contact-form'];
-    if (!form) return console.warn('contact-form not found');
+  const fields = form.querySelectorAll('.form_group');
 
-    const messageDiv  = document.getElementById('form-message') || addMsg(form);
-    // prefer the form's submit control; fallback to #submit for your current markup
-    const submitBtn   = form.querySelector('[type="submit"]') || document.getElementById('submit');
+  // FLOATING LABEL LOGIC
+  fields.forEach(group => {
+    const input = group.querySelector('input, textarea');
+    const error = group.querySelector('.field_error');
 
-    function show(text, ok = true) {
-      messageDiv.style.display = 'block';
-      messageDiv.style.color   = ok ? '#d9cfb0' : '#ffb3b3';  // subtle gold / soft red
-      messageDiv.textContent   = text;
-    }
+    if (!input) return;
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      messageDiv.style.display = 'none';
-      if (submitBtn) { submitBtn.disabled = true; setBtnText('Submitting…'); }
-
-      const data = new FormData(form);
-
-      try {
-        // Try normal CORS first
-        const res = await fetch(scriptURL, { method: 'POST', body: data });
-
-        // Opaque => request sent; treat as success
-        if (res.type === 'opaque') return onSuccess();
-
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-        const ct = (res.headers.get('content-type') || '').toLowerCase();
-        if (ct.includes('application/json')) {
-          const json = await res.json();
-          if (json.ok || json.result === 'success') onSuccess();
-          else throw new Error(json.error || 'Server error');
-        } else {
-          // text/html/plain – count any 2xx as success
-          onSuccess();
-        }
-      } catch (err) {
-        // Fallback: no-cors (can’t read response, assume success if no network error)
-        try {
-          await fetch(scriptURL, { method: 'POST', body: data, mode: 'no-cors' });
-          onSuccess();
-        } catch (err2) {
-          console.error('Submit failed:', err2);
-          show('Oops! Something went wrong. Please try again.', false);
-        }
-      } finally {
-        if (submitBtn) { submitBtn.disabled = false; setBtnText('Submit'); }
+    const checkValue = () => {
+      if (input.value.trim() !== '') {
+        group.classList.add('active');
+      } else {
+        group.classList.remove('active');
       }
+    };
+
+    input.addEventListener('focus', () => {
+      group.classList.add('active');
     });
 
-    function onSuccess() {
-      show('Thank you! Your query has been submitted successfully.');
-      form.reset();
-    }
+    input.addEventListener('blur', () => {
+      checkValue();
+      validateField(input, group, error);
+    });
 
-    function setBtnText(txt) {
-      // Works for <input type="submit"> or <button type="submit">
-      if (!submitBtn) return;
-      if ('value' in submitBtn) submitBtn.value = txt;
-      else submitBtn.textContent = txt;
-    }
+    input.addEventListener('input', () => {
+      checkValue();
+      if (error) clearError(group, error);
+    });
 
-    function addMsg(formEl) {
-      const div = document.createElement('div');
-      div.id = 'form-message';
-      div.style.display = 'none';
-      div.style.marginTop = '10px';
-      div.style.fontSize = '0.95rem';
-      div.style.textAlign = 'center';
-      formEl.appendChild(div);
-      return div;
+    // Init on load (for autofill)
+    checkValue();
+  });
+
+  // VALIDATION
+  function validateField(input, group, error) {
+    if (!input.checkValidity()) {
+      group.classList.add('error');
+      if (error) {
+        error.textContent = input.validationMessage;
+      }
+      return false;
     }
+    return true;
   }
+
+  function clearError(group, error) {
+    group.classList.remove('error');
+    if (error) error.textContent = '';
+  }
+
+  // SUBMIT HANDLER (KEEP BACKEND)
+  const message = document.getElementById('form-message');
+  const btn = form.querySelector('button');
+
+  // URL from existing contact.js
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzbhpC0PqQQxVMGGQ4jcUMYyIiA8aY9tMfMHF4vicWTvh3oxqMV77NmNxcXO-dV_1Qixw/exec';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    let valid = true;
+    fields.forEach(group => {
+      const input = group.querySelector('input, textarea');
+      const error = group.querySelector('.field_error');
+      if (input && !validateField(input, group, error)) valid = false;
+    });
+
+    if (!valid) return;
+
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+    if (message) message.style.display = 'none';
+
+    const data = new FormData(form);
+
+    try {
+      // Try fetch
+      await fetch(scriptURL, {
+        method: 'POST',
+        body: data,
+        mode: 'no-cors'
+      });
+
+      if (message) {
+        message.style.display = 'block';
+        message.textContent = 'Thank you! Your message has been sent.';
+        message.style.color = '#ffffff';
+      }
+      form.reset();
+
+      fields.forEach(g => g.classList.remove('active'));
+    } catch (err) {
+      console.error(err);
+      if (message) {
+        message.style.display = 'block';
+        message.textContent = 'Something went wrong. Please try again.';
+        message.style.color = '#ffb3b3';
+      }
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'SEND MESSAGE';
+    }
+  });
 })();

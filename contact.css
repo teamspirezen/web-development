@@ -1,206 +1,145 @@
-/* ===== Shell & title ===== */
-.contact_section { padding-block: clamp(20px, 4vw, 40px); }
-.contact_wrap { max-width: 95%; width: 90%; margin: 0 auto; }
-
-.contact_title-container { text-align: center; margin-bottom: clamp(14px, 3vw, 24px); }
-.contact_titlecenter {
-  margin: 0 0 6px;
-  font-size: clamp(1.6rem, 1.1rem + 2.2vw, 2.4rem);
-  font-weight: 800;
-  color: #eef1f6;
-}
-.contact_titledes {
-  margin: 0;
-  color: #cfd6e6;
-  font-size: clamp(.95rem, .9rem + .3vw, 1.05rem);
-}
-
-/* ===== Form container ===== */
-.contact_formcontainer {
-  background: #1a1a1a;
-  border: 1px solid rgba(238,192,99,.20);       /* subtle gold */
-  border-radius: 14px;
-  box-shadow: 0 6px 24px rgba(0,0,0,.25), 0 0 10px rgba(238,192,99,.10);
-  padding: clamp(16px, 3.2vw, 28px);
-}
-
-/* Grid layout */
-.contact_form {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0,1fr));
-  gap: clamp(10px, 2vw, 16px);
-}
-
-/* Fields base */
-.contact_field { grid-column: 1 / -1; }
-
-.contact_input,
-.contact_textarea {
-  width: 100%;
-  background: #202124;
-  color: #eef1f6;
-  border: 1px solid rgba(238,192,99,.25);
-  border-radius: 10px;
-  padding: 12px 14px;
-  font-size: 1rem;
-  box-sizing: border-box;
-  outline: none;
-  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
-}
-
-.contact_input:focus,
-.contact_textarea:focus {
-  border-color: rgba(238,192,99,.55);
-  box-shadow: 0 0 0 2px rgba(238,192,99,.18);
-}
-
-.contact_textarea { resize: vertical; min-height: 140px; }
-
-/* Button */
-.contact_btn {
-  border: none;
-  border-radius: 10px;
-  padding: 12px 16px;
-  height: 46px;
-  font-weight: 700;
-  letter-spacing: .2px;
-  color: #0b0c0d;
-  background: linear-gradient(90deg, #f3e3c3, #eec063);
-  box-shadow: 0 0 8px rgba(238,192,99,.15), inset 0 1px 0 rgba(255,255,255,.18);
-  cursor: pointer;
-  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
-}
-.contact_btn:hover { transform: translateY(-1px); box-shadow: 0 0 10px rgba(238,192,99,.22); filter: brightness(1.02); }
-.contact_btn:active { transform: translateY(0); filter: brightness(.98); }
-
-/* Status message */
-.contact_form-message {
-  display: none;
-  margin-top: 8px;
-  text-align: center;
-  font-size: .95rem;
-  color: #d9cfb0; /* subtle gold */
-}
-
-/* ===== Responsive columns ===== */
-/* Tablet landscape & up: split first row (name/phone) */
-@media (min-width: 820px) {
-  .contact_name  { grid-column: 1 / span 6; }
-  .contact_phone { grid-column: 7 / span 6; }
-  .contact_email,
-  .contact_message,
-  .contact_btn   { grid-column: 1 / -1; }
-}
-
-/* Large desktops—add a breath of space without changing layout */
-@media (min-width: 1200px) {
-  .contact_formcontainer { padding: 28px 32px; }
-}
-
-/* Small phones—slightly larger tap targets */
-@media (max-width: 420px) {
-  .contact_input, .contact_textarea { font-size: 1.02rem; padding: 13px 14px; }
-  .contact_btn { height: 48px; }
-}
 /* =========================
-   CONTACT — White-theme overrides
-   Paste this after your contact styles
-   ========================= */
+   CONTACT — EDITORIAL STYLE
+========================= */
 
-:root {
-  --td-white: #ffffff;
-  --td-white-rgba: 255,255,255;
+.contact_editorial {
+  padding: clamp(80px, 12vw, 160px) 0;
 }
 
-/* Panel / shell: white border + subtle white halo instead of gold */
-.contact_formcontainer {
-  background: #121212; /* keep dark panel */
-  border: 1px solid rgba(var(--td-white-rgba), 0.12);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.35), 0 0 10px rgba(var(--td-white-rgba), 0.03);
+/* WRAP */
+.editorial_wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 80px;
+  align-items: start;
 }
 
-/* Inputs / textarea: white-tinted borders and focus */
+/* COPY */
+.editorial_copy {
+  padding-right: 40px;
+}
+
+.editorial_title {
+  font-size: clamp(3.2rem, 6vw, 4.6rem);
+  line-height: 1.05;
+  color: #ffffff;
+  margin-bottom: 32px;
+}
+
+.editorial_lead {
+  font-size: 1.15rem;
+  color: #ffffff;
+  opacity: 0.85;
+  max-width: 520px;
+  margin-bottom: 24px;
+}
+
+.editorial_text {
+  font-size: 0.95rem;
+  color: #ffffff;
+  opacity: 0.7;
+  max-width: 480px;
+}
+
+/* FORM AREA */
+.editorial_form {
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  padding-left: 40px;
+}
+
+/* FORM */
+.contact_form--stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* GROUP */
+.form_group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  /* specific for potential floating element positioning */
+}
+
+/* LABELS — STRONG WHITE */
+.form_group label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+}
+
+/* INPUTS */
 .contact_input,
 .contact_textarea {
-  background: #151515;
-  color: #eef1f6;
-  border: 1px solid rgba(var(--td-white-rgba), 0.12);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
-}
-
-.contact_input::placeholder,
-.contact_textarea::placeholder {
-  color: rgba(255,255,255,0.32);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+  padding: 10px 0;
+  font-size: 1rem;
+  color: #ffffff;
+  width: 100%;
+  /* Ensure full width */
+  font-family: inherit;
 }
 
 .contact_input:focus,
 .contact_textarea:focus {
-  border-color: rgba(var(--td-white-rgba), 0.42);
-  box-shadow: 0 0 0 3px rgba(var(--td-white-rgba), 0.06);
   outline: none;
+  border-bottom-color: rgba(238, 192, 99, 0.9);
 }
 
-/* Textarea sizing preserved */
-.contact_textarea { min-height: 140px; }
+/* TEXTAREA */
+.contact_textarea {
+  resize: none;
+  min-height: 140px;
+}
 
-/* Form grid lines / gap unchanged */
-
-
-/* Button: convert to white / neutral CTA (instead of gold)
-   Keeps strong contrast on dark background */
+/* BUTTON */
 .contact_btn {
+  margin-top: 10px;
+  align-self: flex-start;
+  padding: 12px 32px;
+  border-radius: 999px;
   background: linear-gradient(90deg, #f3e3c3, #eec063);
-  color: #0b0c0d;
-  border: 1px solid rgba(var(--td-white-rgba), 0.28);
-  box-shadow: 0 8px 26px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.6);
-  transition: transform .15s ease, box-shadow .18s ease, filter .12s ease;
-}
-.contact_btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 36px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.66);
-  filter: brightness(0.985);
-}
-.contact_btn:active {
-  transform: translateY(0);
-  filter: brightness(0.98);
+  border: none;
+  font-weight: 800;
+  cursor: pointer;
+  color: #000;
+  /* Ensure text is readable on gold */
 }
 
-/* Status message: use white/neutral tone */
+/* STATUS */
 .contact_form-message {
-  color: rgba(var(--td-white-rgba), 0.9);
+  margin-top: 14px;
+  color: #ffffff;
 }
 
-/* Small decorative lines / accents — neutral white */
-.contact_title-container .contact_titledes,
-.contact_title-container .contact_titlecenter {
-  color: rgba(var(--td-white-rgba), 0.92);
+/* ERRORS */
+.field_error {
+  font-size: 0.75rem;
+  color: #ffb3b3;
 }
 
-/* Replace gold borders on any inner elements (if present) */
-.contact_formcontainer *,
-.contact_formcontainer *::before,
-.contact_formcontainer *::after {
-  /* Only change border-like properties we know: */
-}
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .editorial_wrap {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    padding: 0 20px;
+    /* Add some side padding on mobile */
+  }
 
-/* For screens where border contrast needs boost on light text */
-@media (min-width: 820px) {
-  .contact_formcontainer { padding: clamp(18px, 3vw, 30px); }
-}
+  .editorial_form {
+    border-left: none;
+    padding-left: 0;
+  }
 
-/* Small phones — keep tap targets */
-@media (max-width: 420px) {
-  .contact_input, .contact_textarea { font-size: 1.02rem; padding: 13px 14px; }
-  .contact_btn { height: 48px; }
+  .editorial_copy {
+    padding-right: 0;
+  }
 }
-
-/* Optional: if you still have gold pills / badges in this area,
-   force them white (uncomment if needed):
-.contact_iconBox,
-.contact_badge {
-  background: rgba(var(--td-white-rgba), 0.05);
-  border: 1px solid rgba(var(--td-white-rgba), 0.2);
-  color: #fff;
-}
-*/
-

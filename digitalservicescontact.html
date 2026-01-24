@@ -159,38 +159,58 @@
         </div>
     </aside>
 
-    <!-- Contact: Title -->
-    <section class="contact_section">
-        <div class="contact_wrap">
-            <div class="contact_title-container">
-                <h1 class="contact_titlecenter">Get in touch - Digital Services</h1>
-                <p class="contact_titledes">
-                    Fill in the form below and our team will contact you within 24–48 hours regarding our digital
-                    services.
+    <!-- Contact: Editorial Style -->
+    <section class="contact_editorial">
+        <div class="editorial_wrap">
+            <!-- Copy Side -->
+            <div class="editorial_copy">
+                <h1 class="editorial_title">Get in touch - Digital Services</h1>
+                <p class="editorial_lead">Fill in the form below and our team will contact you within 24–48 hours
+                    regarding our digital
+                    services.</p>
+                <p class="editorial_text">
+                    We look forward to helping you achieve your digital goals.
                 </p>
             </div>
 
-            <!-- Contact: Form -->
-            <div class="contact_formcontainer">
-                <form class="contact_form" method="post"
+            <!-- Form Side -->
+            <div class="editorial_form">
+                <form class="contact_form--stacked" method="post"
                     action="https://script.google.com/macros/s/AKfycbwphBFlodQ8soQbIW31UbzxVeFQuyCEtOiOrBINRrao603w0QnM1vgEodhtr8jla40zXg/exec"
                     name="contact-form">
 
-                    <!-- Row 1 -->
-                    <input class="contact_field contact_input contact_name" type="text" name="your-name"
-                        placeholder="Name" required pattern="[A-Za-z\s\.,'-]+"
-                        title="Name should only contain letters and symbols like . , ' -" />
+                    <!-- Name -->
+                    <div class="form_group">
+                        <label>FULL NAME</label>
+                        <input class="contact_input" type="text" name="your-name" placeholder="Name" required
+                            pattern="[A-Za-z\s\.,'-]+"
+                            title="Name should only contain letters and symbols like . , ' -" />
+                        <small class="field_error"></small>
+                    </div>
 
-                    <input class="contact_field contact_input contact_phone" type="tel" name="your-number"
-                        placeholder="Phone" required pattern="\d+" title="Phone number should only contain numbers" />
+                    <!-- Phone -->
+                    <div class="form_group">
+                        <label>PHONE</label>
+                        <input class="contact_input" type="tel" name="your-number" placeholder="Phone" required
+                            pattern="\d+" title="Phone number should only contain numbers" />
+                        <small class="field_error"></small>
+                    </div>
 
-                    <!-- Row 2 -->
-                    <input class="contact_field contact_input contact_email" type="email" name="your-email"
-                        placeholder="Email" required title="Please enter a valid email" />
+                    <!-- Email -->
+                    <div class="form_group">
+                        <label>EMAIL</label>
+                        <input class="contact_input" type="email" name="your-email" placeholder="Email" required
+                            title="Please enter a valid email" />
+                        <small class="field_error"></small>
+                    </div>
 
-                    <!-- Row 3 -->
-                    <textarea class="contact_field contact_textarea contact_message" name="message" rows="7"
-                        placeholder="Tell us about your project (Web, SEO, Automation)..." required></textarea>
+                    <!-- Message -->
+                    <div class="form_group">
+                        <label>MESSAGE</label>
+                        <textarea class="contact_textarea" name="message" rows="7"
+                            placeholder="Tell us about your project (Web, SEO, Automation)..." required></textarea>
+                        <small class="field_error"></small>
+                    </div>
 
                     <!-- Submit -->
                     <button class="contact_field contact_btn" type="submit" id="contact_submit">Submit</button>
