@@ -106,5 +106,11 @@
         "name": "Jaishree",
         "passwordHash": "$2b$10$Qv1RVutirqLB1D.RFIN1GOFbsFIMTIS2C8B2RdEKH2Araw6fg8JpC",
         "designation": "PA"
+    },
+    {
+        "email": "harini.muthuvel@spirezenenterprises.com",
+        "name": "Harini muthuvel",
+        "passwordHash": "$2b$10$BoQFngg1qV/AA2kQHbxlZeJ12ktdKjyB7DjqT3CzO0cNX7gIKh1/e",
+        "designation": "PA"
     }
 ]

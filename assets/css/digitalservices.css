@@ -124,76 +124,217 @@ body {
 /* =========================================
    HERO SECTION
    ========================================= */
-.ds-hero {
-    min-height: 100vh;
+/* =========================================
+   CINEMATIC HERO SECTION
+   ========================================= */
+.cinematic-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    background: radial-gradient(circle at 50% 10%, rgba(191, 149, 63, 0.15) 0%, rgba(5, 5, 5, 0) 70%);
-    padding-top: 120px;
-    padding-bottom: 60px;
+    background-color: var(--bg-dark);
 }
 
-.ds-hero__content {
+/* 1. Background Gradient (CSS Fallback & Overlay) */
+.hero-bg-gradient {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(19, 19, 19, 1) 0%, rgba(5, 5, 5, 1) 100%);
+    z-index: 1;
+}
+
+/* High-Quality Gradient Mesh Animation (Fallback Mode) */
+.fallback-mode .hero-bg-gradient {
+    background:
+        radial-gradient(at 0% 0%, rgba(209, 169, 95, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(40, 40, 40, 0.1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(209, 169, 95, 0.05) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(40, 40, 40, 0.1) 0px, transparent 50%);
+    background-size: 150% 150%;
+    animation: meshBreath 15s ease infinite alternate;
+}
+
+@keyframes meshBreath {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 2. Three.js Canvas Container */
+.canvas-container {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    /* Let clicks pass through if needed, but we handle interaction globally */
+}
+
+/* 3. Content overlay */
+.hero-content {
+    position: relative;
+    z-index: 10;
     text-align: center;
-    max-width: 900px;
+    width: 90%;
+    max-width: 1200px;
+    pointer-events: none;
+    /* Text shouldn't block canvas interaction */
+}
+
+/* Pointer events re-enabled for interactive elements */
+.hero-content a {
+    pointer-events: auto;
+}
+
+.hero-headline {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 5vw, 6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    color: #fff;
+    mix-blend-mode: exclusion;
+    /* Cool effect over 3D orb */
+}
+
+.hero-headline span {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(20px);
+    animation: cineFadeIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.hero-headline .line-1 {
+    animation-delay: 0.2s;
+}
+
+.hero-headline .line-2 {
+    animation-delay: 0.4s;
+    color: var(--gold-1);
+}
+
+.hero-subtext {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 500px;
+    margin: 0 auto 40px;
+    opacity: 0;
+    animation: cineFadeIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.8s;
+}
+
+@keyframes cineFadeIn {
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
+
+/* 4. Magnetic CTA */
+.magnetic-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 36px;
+    color: var(--gold-1);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 50px;
+    transition: color 0.3s;
+    cursor: pointer;
+    overflow: hidden;
+    /* For border effect */
+    opacity: 0;
+    animation: cineFadeIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 1s;
+}
+
+.magnetic-btn .btn-text {
+    position: relative;
     z-index: 2;
 }
 
-.ds-hero__chip {
-    display: inline-block;
-    padding: 8px 16px;
+/* Custom border logic */
+.magnetic-btn .btn-border {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(209, 169, 95, 0.3);
     border-radius: 50px;
-    background: rgba(191, 149, 63, 0.1);
-    border: 1px solid rgba(191, 149, 63, 0.3);
-    color: var(--gold-2);
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
 }
 
-.ds-hero__title {
-    font-family: var(--font-heading);
-    font-size: clamp(3rem, 6vw, 5rem);
-    line-height: 1.1;
-    margin-bottom: 24px;
-    font-weight: 700;
+.magnetic-btn:hover {
+    color: #fff;
 }
 
-.ds-hero__subtitle {
-    font-size: clamp(1.1rem, 2vw, 1.4rem);
-    color: var(--text-muted);
-    margin-bottom: 40px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
+.magnetic-btn:hover .btn-border {
+    border-color: var(--gold-1);
+    background: rgba(209, 169, 95, 0.1);
+    box-shadow: 0 0 30px rgba(209, 169, 95, 0.2);
+    transform: scale(1.05);
 }
 
-.ds-btn-glow {
-    display: inline-block;
-    width: auto;
-    min-width: 180px;
-    margin: 0 10px 10px 0;
-    text-align: center;
-    padding: 16px 20px;
-    background: linear-gradient(90deg, #f3e3c3, #eec063);
-    color: black;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 50px;
-    box-shadow: 0 5px 20px rgba(191, 149, 63, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-size: 1.1rem;
+/* 5. Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: cineFadeIn 1s forwards 2s;
+    z-index: 10;
 }
 
-.ds-btn-glow:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 40px rgba(238, 192, 99, 0.6);
+.mouse {
+    width: 26px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    position: relative;
 }
+
+.wheel {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--gold-1);
+    border-radius: 50%;
+    animation: scrollWheel 2s infinite;
+}
+
+@keyframes scrollWheel {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, 20px);
+        opacity: 0;
+    }
+}
+
+/* OLD HERO DELETED */
 
 /* =========================================
    2. PROCESS SECTION (Cards with Hover)
@@ -440,16 +581,45 @@ body {
 }
 
 .ds-partner-logo {
-    filter: grayscale(100%) brightness(0.8);
-    opacity: 0.6;
-    transition: all 0.3s;
-    height: 40px;
+    /* filter: grayscale(100%) brightness(0.8); REMOVED for visibility */
+    /* opacity: 0.6; REMOVED for visibility */
+    transition: transform 6s ease-in-out;
+    /* Adjusted for float logic */
+    height: 80px;
+    /* Bigger size as requested */
     object-fit: contain;
+    animation: floatLogo 6s ease-in-out infinite;
 }
 
-.ds-partner-logo:hover {
-    filter: none;
-    opacity: 1;
+/* Staggered animation delays for dynamic feel */
+.ds-partner-logo:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.ds-partner-logo:nth-child(2) {
+    animation-delay: 1.5s;
+}
+
+.ds-partner-logo:nth-child(3) {
+    animation-delay: 3s;
+}
+
+.ds-partner-logo:nth-child(4) {
+    animation-delay: 4.5s;
+}
+
+/* Hover effects removed as requested */
+
+@keyframes floatLogo {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 /* =========================================
@@ -1385,6 +1555,7 @@ body {
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-decoration: none;
 }
 
 .ds-btn-glow:hover {
@@ -1609,7 +1780,7 @@ body {
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.02);
     margin-top: 10px;
-    
+
 }
 
 .ds-btn-outline:hover {

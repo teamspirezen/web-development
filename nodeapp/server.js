@@ -14,8 +14,16 @@ const USERS_FILE = path.join(__dirname, 'users.json');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Serve static files from root for CSS/Images
-app.use(express.static(path.join(__dirname, '../'), { index: false }));
+// Detect environment (Local vs Hostinger)
+// If index.html exists in __dirname, we are in Hostinger's flat structure.
+// Otherwise, we are in local nested structure (nodeapp/).
+const isFlatStructure = fs.existsSync(path.join(__dirname, 'index.html'));
+const ROOT_DIR = isFlatStructure ? __dirname : path.join(__dirname, '../');
+
+console.log(`Running in ${isFlatStructure ? 'FLAT (Hostinger)' : 'NESTED (Local)'} mode. Root: ${ROOT_DIR}`);
+
+// Serve static files from ROOT_DIR for CSS/Images
+app.use(express.static(ROOT_DIR, { index: false, extensions: ['html'] }));
 
 app.use(session({
     secret: 'spirezen_secret_key_123',
@@ -37,6 +45,31 @@ function getUsers() {
 
 // Routes
 app.get('/', (req, res) => {
+    // Serve the public landing page
+    res.sendFile(path.join(ROOT_DIR, 'index.html'));
+});
+
+// Dynamic route for any HTML page
+app.get('/:page', (req, res, next) => {
+    const page = req.params.page;
+    // Prevent directory traversal
+    if (page.includes('..') || page.includes('/')) {
+        return next();
+    }
+
+    const filePath = path.join(ROOT_DIR, `${page}.html`);
+    const filePathDirect = path.join(ROOT_DIR, page); // For files that might already have extensions or be folders
+
+    if (fs.existsSync(filePath)) {
+        res.sendFile(filePath);
+    } else if (fs.existsSync(filePathDirect) && fs.lstatSync(filePathDirect).isFile()) {
+        res.sendFile(filePathDirect);
+    } else {
+        next(); // Pass to 404 or other routes
+    }
+});
+
+app.get('/login', (req, res) => {
     if (req.session.user) {
         return res.redirect('/dashboard');
     }
@@ -54,7 +87,7 @@ app.post('/login', async (req, res) => {
     const user = users.find(u => u.email === email);
 
     if (!user) {
-        return res.send('Invalid credentials <a href="/">Try Again</a>');
+        return res.send('Invalid credentials <a href="/login">Try Again</a>');
     }
 
     const match = await bcrypt.compare(password, user.passwordHash);
@@ -67,20 +100,20 @@ app.post('/login', async (req, res) => {
         };
         return res.redirect('/dashboard');
     } else {
-        return res.send('Invalid credentials <a href="/">Try Again</a>');
+        return res.send('Invalid credentials <a href="/login">Try Again</a>');
     }
 });
 
 app.get('/dashboard', (req, res) => {
     if (!req.session.user) {
-        return res.redirect('/');
+        return res.redirect('/login');
     }
     res.sendFile(path.join(__dirname, 'views', 'dashboard.html'));
 });
 
 app.get('/standup', (req, res) => {
     if (!req.session.user) {
-        return res.redirect('/');
+        return res.redirect('/login');
     }
 
     // Read index.html template
@@ -259,7 +292,7 @@ app.post('/reset-password', async (req, res) => {
 // --- LEAVE REQUEST SECTION ---
 app.get('/leave', (req, res) => {
     if (!req.session.user) {
-        return res.redirect('/');
+        return res.redirect('/login');
     }
     // Reuse the User Info injection logic for consistency
     const filePath = path.join(__dirname, 'views', 'leave.html');
@@ -333,7 +366,7 @@ app.post('/leave', async (req, res) => {
 
 app.get('/logout', (req, res) => {
     req.session.destroy();
-    res.redirect('/');
+    res.redirect('/login');
 });
 
 app.listen(PORT, () => {

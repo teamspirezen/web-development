@@ -185,7 +185,7 @@ body {
   width: clamp(200px, 26vw, 320px);
   aspect-ratio: 1 / 1;
 
-  mask-image: url("thedalediginova.svg");
+  mask-image: url("../img/thedalediginova.svg");
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;

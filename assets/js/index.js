@@ -3,7 +3,7 @@ const prodlineupData = {
     title: "thedalemun.",
     price: "Empowering Future-Ready Minds",
     desc: "thedalemun is a transformative program designed to build confidence, communication, and global awareness in students through real-world simulations, debate, and leadership training—equipping them to thrive in an interconnected world.",
-    img: "thedalemun.svg",
+    img: "assets/img/thedalemun.svg",
     buttonText: "Explore thedalemun",
     link: "thedalemunclub.html"
   },
@@ -11,7 +11,7 @@ const prodlineupData = {
     title: "thedalewordweft.",
     price: "Skill Development, Reimagined",
     desc: "Under TheDaleWordWeft, Munterra and a series of upcoming workshops offer structured learning experiences that build strong foundational skills and advance participants toward industry-ready expertise through real-world challenges.",
-    img: "thedalewordweft.svg",
+    img: "assets/img/thedalewordweft.svg",
     buttonText: "Explore thedalewordweft",
     link: "thedalewordweft.html"
   },
@@ -19,7 +19,7 @@ const prodlineupData = {
     title: "thedalediginova.",
     price: "Master the Digital Economy",
     desc: "thedalediginova offers a comprehensive suite of digital marketing, tech, and business modules—crafted to help individuals and institutions upskill and thrive in today’s fast-evolving digital landscape.",
-    img: "thedalediginova.svg",
+    img: "assets/img/thedalediginova.svg",
     buttonText: "Coming Soon.",
     link: "thedalediginova.html"
   }
