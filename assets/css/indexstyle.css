@@ -928,7 +928,11 @@ body {
 
 /* Container */
 .testimun_name-section {
-  background-color: #0a0a0a;
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
+  background-color: transparent;
+  /* Match real bg */
   padding: 20px 0;
   display: flex;
   justify-content: center;
@@ -944,28 +948,9 @@ body {
   overflow: hidden;
   margin: 0 auto;
   box-sizing: border-box;
-}
-
-/* left & right gradient masks */
-.testimun_name-container::before,
-.testimun_name-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 150px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.testimun_name-container::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(10, 10, 10, 1), rgba(10, 10, 10, 0));
-}
-
-.testimun_name-container::after {
-  right: 0;
-  background: linear-gradient(to left, rgba(10, 10, 10, 1), rgba(10, 10, 10, 0));
+  /* Use mask image for perfect seamless fading over any dark background */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 120px, black calc(100% - 120px), transparent);
+  mask-image: linear-gradient(to right, transparent, black 120px, black calc(100% - 120px), transparent);
 }
 
 /* slider & wrapper */
@@ -1099,6 +1084,9 @@ body {
 
 /* Key Features — improved responsive layout (no :root vars) */
 .key-features-section {
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
   color: #ffffff;
   padding: 20px 20px 20px 20px;
   font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -1260,6 +1248,10 @@ body {
 
 .team-split-section {
   --gap: clamp(24px, 4vw, 48px);
+
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
 
   width: 90%;
   margin: 0 auto 40px;
@@ -1475,6 +1467,9 @@ body {
 
 /* Base */
 .announcement_section {
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
   width: 90%;
   margin: 10px auto;
   padding: 18px 16px;
@@ -2192,3 +2187,225 @@ body {
 }
 
 /* Footer styles moved to style.css */
+/* === REDESIGN ENHANCEMENTS === */
+
+/* Animation Utilities */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-1 {
+  transition-delay: 0.1s;
+}
+
+.delay-2 {
+  transition-delay: 0.2s;
+}
+
+.delay-3 {
+  transition-delay: 0.3s;
+}
+
+/* Hero Enhancements */
+.hero-micro {
+  display: block;
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #eec063;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  color: #eaeaea;
+  margin-top: 12px;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.scroll-invite {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-5px);
+  }
+
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Outcome Statements */
+.prodlineup_outcome {
+  font-size: 0.95rem;
+  color: #eec063;
+  /**** Gold for outcome ****/
+  margin-bottom: 4px;
+  font-weight: 600;
+  display: block;
+}
+
+.prodlineup_usage {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 12px;
+  font-style: italic;
+  display: block;
+}
+
+/* Process Section */
+.process-section {
+  width: 90%;
+  margin: 60px auto;
+  color: #fff;
+  text-align: center;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+  text-align: left;
+}
+
+.process-step {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s, background 0.3s;
+}
+
+.process-step:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(238, 192, 99, 0.3);
+}
+
+.process-number {
+  font-size: 2.5rem;
+  color: #eec063;
+  font-weight: 800;
+  display: block;
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+
+.process-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.process-closing {
+  margin-top: 40px;
+  font-style: italic;
+  color: #bbb;
+  font-size: 1.1rem;
+}
+
+/* Why Choose Us */
+.why-section {
+  width: 90%;
+  margin: 60px auto;
+  color: #fff;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.why-card {
+  border-left: 3px solid #eec063;
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.why-title {
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.why-desc {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* Mid-Page Emotional Statement */
+.emotional-statement {
+  width: 100%;
+  padding: 100px 5%;
+  background: linear-gradient(to bottom, #0a0a0a, #151515);
+  text-align: center;
+  margin: 80px 0;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.emotional-text {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.emotional-sub {
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+  color: #888;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Section Sub-labels (Origin, Belief, etc.) */
+.section-label {
+  font-size: 0.8rem;
+  color: #eec063;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+  display: block;
+  font-weight: 700;
+}
+
+/* Footer Enhancements */
+.brand-philosophy {
+  font-style: italic;
+  color: #888;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}

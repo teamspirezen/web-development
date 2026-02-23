@@ -331,7 +331,7 @@ app.post('/leave', async (req, res) => {
 
     const mailOptions = {
         from: user.email, // This sets the "From" header, but actual sender is the auth user above
-        to: 'tgnascorp714@gmail.com', // The specific mail you mentioned
+        to: 'hr@spirezenenterprises.com', // The specific mail you mentioned
         subject: `LEAVE REQUEST: ${subject} - ${user.email}`,
         text: `
         Name: ${user.name} (${user.designation})
