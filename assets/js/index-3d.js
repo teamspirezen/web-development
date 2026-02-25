@@ -80,35 +80,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================
-    // 3. QUOTE SECTION: "Void Reflection" Parallax
+    // 3. QUOTE SECTION: "Layout Tension"
     // =========================================
-    const quoteMark = document.querySelector('.quote_mark');
-    const quoteText = document.querySelector('.quote_text');
+    const splitQuoteLeft = document.querySelector('.split-quote-left');
+    const splitQuoteRight = document.querySelector('.split-quote-right');
+    const accentWords = document.querySelectorAll('.split-quote-section .accent-word');
 
-    if (quoteMark && quoteText) {
-        gsap.to(quoteMark, {
-            yPercent: 150, // Move down as we scroll down
-            ease: "none",
+    if (splitQuoteLeft && splitQuoteRight) {
+        const quoteTl = gsap.timeline({
             scrollTrigger: {
-                trigger: '.underquote_container',
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true
+                trigger: '.split-quote-section',
+                start: "top 70%", // Start animation when 70% of the section is in view
+                toggleActions: "play none none none"
             }
         });
 
-        // Text slightly floats up
-        gsap.from(quoteText, {
-            y: 50,
-            opacity: 0,
-            rotationX: -20,
-            scrollTrigger: {
-                trigger: '.underquote_container',
-                start: "top 80%",
-                end: "center center",
-                scrub: 1
-            }
+        // Step 1: Left block fades in and slides from left
+        quoteTl.to(splitQuoteLeft, {
+            x: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: "power2.out"
         });
+
+        // Step 2: Right block slides in from right after 0.4s delay
+        quoteTl.to(splitQuoteRight, {
+            x: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: "power2.out"
+        }, "-=0.3"); // Overlap slightly to match the 0.4s delay after left block starts (0.7 - 0.3 = 0.4)
+
+        // Step 3: Accent words highlight after text settles
+        if (accentWords.length > 0) {
+            quoteTl.add(() => {
+                accentWords.forEach(word => word.classList.add('highlight'));
+            }, "+=0.5"); // 0.5s delay after the blocks settle
+        }
     }
 
     // =========================================

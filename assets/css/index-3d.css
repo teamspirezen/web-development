@@ -99,7 +99,7 @@ footer {
 
 /* Logo popping out even further */
 .logowel {
-    width: 80px !important;
+    width: 340px !important;
     filter: drop-shadow(0 20px 30px rgba(232, 170, 86, 0.4));
     transform-style: preserve-3d;
 }
@@ -234,49 +234,103 @@ footer {
 }
 
 /* =========================================
-   3. QUOTE SECTION: "The Void Reflection"
+   3. QUOTE SECTION: "Layout Tension"
    ========================================= */
-.underquote_container {
-    padding: 120px 0;
+.split-quote-section {
+    padding: 180px 0;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
     background: transparent;
+    border: none;
     box-shadow: none;
-    position: relative;
-    text-align: center;
 }
 
-/* Glassy container */
-.underquote_quote {
+/* Micro-interaction: slight letter spacing on hover */
+.split-quote-section:hover .quote_line {
+    letter-spacing: 0.5px;
+}
+
+.split-quote-left {
+    flex: 1 1 50%;
+    text-align: left;
+    transform: translateX(-60px);
+    /* Base state for animation */
+    opacity: 0;
+}
+
+.split-quote-right {
+    flex: 1 1 50%;
+    text-align: right;
+    transform: translateX(60px);
+    /* Base state for animation */
+    opacity: 0;
+    padding-right: 5px;
+    /* Prevent hover letter-spacing from causing horizontal scroll/cut off */
+    white-space: nowrap;
+    /* Prevent awkward wrapping for the short right side */
+}
+
+.split-quote-section .quote_line {
+    margin: 0;
+    color: #fff;
+    transition: letter-spacing 0.4s ease;
+}
+
+.split-quote-left .quote_line {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.split-quote-right .quote_line {
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Accent words for color transition */
+.accent-word {
+    color: #fff;
+    /* Starts white */
     display: inline-block;
-    background: rgba(10, 10, 10, 0.4);
-    backdrop-filter: blur(12px) saturate(150%);
-    -webkit-backdrop-filter: blur(12px) saturate(150%);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 60px;
-    border-radius: 20px;
-    width: 65%;
-    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.6);
-    transform-style: preserve-3d;
+    transition: color 0.6s ease, transform 0.6s ease;
 }
 
-/* Parallax Mark handled by GSAP */
-.quote_mark {
-    position: absolute;
-    top: -50px;
-    left: 10%;
-    font-size: 15rem !important;
-    color: rgba(232, 170, 86, 0.05);
-    /* Extremely faint */
-    z-index: -1;
-    transform-style: preserve-3d;
+/* We will add a class string via JS to trigger this state */
+.accent-word.highlight {
+    color: #e8aa56;
+    transform: scale(1.03);
 }
 
-.quote_text {
-    font-size: 1.4rem !important;
-    color: #fff !important;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 1);
-    transform: translateZ(20px);
-    /* Lift text off glass */
+.large-accent.highlight {
+    transform: scale(1.05);
+    /* slightly bigger punch for the final word */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .split-quote-section {
+        flex-direction: column;
+        gap: 60px;
+        align-items: flex-start;
+        padding: 120px 0;
+    }
+
+    .split-quote-left,
+    .split-quote-right {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+
+    .split-quote-right {
+        text-align: right;
+        /* Maintain contrast */
+    }
 }
 
 
@@ -323,6 +377,19 @@ footer {
 
 .amun_image {
     position: relative;
+    animation: floatMonolith 6s ease-in-out infinite;
+}
+
+@keyframes floatMonolith {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
 }
 
 .amun_image img {
@@ -342,8 +409,24 @@ footer {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, transparent 50%, rgba(232, 170, 86, 0.2) 100%);
+    background: linear-gradient(135deg, transparent 20%, rgba(255, 255, 255, 0.5) 50%, transparent 80%);
+    background-size: 300% 300%;
+    animation: sweepGlare 4s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
     pointer-events: none;
+}
+
+@keyframes sweepGlare {
+    0% {
+        background-position: 100% 100%;
+    }
+
+    40% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
 }
 
 

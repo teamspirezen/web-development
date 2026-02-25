@@ -2,26 +2,26 @@ const prodlineupData = {
   thedalemun: {
     title: "thedalemun.",
     price: "Empowering Future-Ready Minds",
-    desc: "thedalemun is a transformative program designed to build confidence, communication, and global awareness in students through real-world simulations, debate, and leadership training—equipping them to thrive in an interconnected world.",
+    desc: "TheDaleMUN is a transformative Model United Nations platform designed to develop confident communicators, strategic thinkers, and emerging leaders. Through immersive real-world simulations, structured debate, and hands-on leadership training, students gain global awareness and the skills required to thrive in an increasingly interconnected world.",
     img: "assets/img/thedalemun.svg",
     buttonText: "Explore thedalemun",
-    link: "thedalemunclub.html"
+    link: "thedalemunclub"
   },
   thedalewordweft: {
     title: "thedalewordweft.",
     price: "Skill Development, Reimagined",
-    desc: "Under TheDaleWordWeft, Munterra and a series of upcoming workshops offer structured learning experiences that build strong foundational skills and advance participants toward industry-ready expertise through real-world challenges.",
+    desc: "TheDaleWordweft is our online learning platform delivering structured, high-impact workshops including Munterra and a growing series of future-ready programs. Designed to strengthen foundational skills and refine advanced competencies, each experience blends real-world challenges with practical insight preparing participants to become confident, industry-ready individuals",
     img: "assets/img/thedalewordweft.svg",
     buttonText: "Explore thedalewordweft",
-    link: "thedalewordweft.html"
+    link: "thedalewordweft"
   },
   thedalediginova: {
-    title: "thedalediginova.",
+    title: "TheDaleDigiNova.",
     price: "Master the Digital Economy",
-    desc: "thedalediginova offers a comprehensive suite of digital marketing, tech, and business modules—crafted to help individuals and institutions upskill and thrive in today’s fast-evolving digital landscape.",
+    desc: "TheDaleDigiNova is a results-driven digital growth platform offering branding, website development, marketing strategy, systems, and automation solutions. Designed for entrepreneurs, institutions, and forward-thinking businesses, we build strong digital foundations that help brands scale, compete, and thrive in today’s fast-evolving digital economy",
     img: "assets/img/thedalediginova.svg",
-    buttonText: "Coming Soon.",
-    link: "thedalediginova.html"
+    buttonText: "Explore thedalediginova",
+    link: "digitalservices"
   }
 };
 

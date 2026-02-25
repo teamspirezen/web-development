@@ -2064,58 +2064,54 @@ body {
   Mobile polish: keep welcome (heading + logo) consistent
   ========================= */
 
-/* Force the welcome row to remain side-by-side (no stacking) on small screens,
-   but prevent overflow by truncating heading if necessary. */
+/* Optimize hero section for mobile: stack the text and logo to prevent truncation */
 @media (max-width: 900px) {
 
   .welcome-section,
   .welcome-section .content {
-    gap: 12px !important;
+    gap: 20px !important;
     align-items: center !important;
-    justify-content: space-between !important;
-    flex-wrap: nowrap !important;
-    /* keep side-by-side */
+    justify-content: center !important;
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    text-align: center !important;
   }
 
   /* Fixed, predictable logo width on all screens */
   .logowel {
-    flex: 0 0 96px !important;
-    /* fixed visual size on mobile & desktop */
-    width: 96px !important;
+    flex: 0 0 auto !important;
+    width: clamp(120px, 30vw, 180px) !important;
     height: auto !important;
     display: block !important;
   }
 
-  /* Heading: allow only a single line visually, but keep accessible (wrap if needed) */
+  /* Heading: allow wrapping so text is never truncated */
   .contenth1 {
     flex: 1 1 auto !important;
-    max-width: calc(100% - 112px) !important;
-    /* leave room for logo + gap */
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
     margin: 0 !important;
-    line-height: 1.05 !important;
-    font-size: clamp(18px, 4.5vw, 32px) !important;
+    line-height: 1.2 !important;
+    font-size: clamp(28px, 6vw, 42px) !important;
   }
 
   /* Slightly reduce section padding so it fits small screens cleanly */
   .welcome-section {
-    padding-inline: 12px !important;
-    padding-block: 10px !important;
+    padding-inline: 16px !important;
+    padding-block: 20px !important;
   }
 }
 
 /* Keep the same welcome look even on very small viewports */
 @media (max-width: 420px) {
   .logowel {
-    flex: 0 0 84px !important;
-    width: 84px !important;
+    width: clamp(100px, 25vw, 140px) !important;
   }
 
   .contenth1 {
-    max-width: calc(100% - 100px) !important;
-    font-size: clamp(16px, 5.6vw, 28px) !important;
+    font-size: clamp(24px, 7vw, 32px) !important;
   }
 }
 
