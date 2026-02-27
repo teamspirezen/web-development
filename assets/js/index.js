@@ -54,20 +54,30 @@ prodlineupOptions.forEach(option => {
     const data = prodlineupData[model];
     if (!data) return;
 
-    // Trigger fade-out
-    prodlineupContainer.classList.add('fade-out');
+    // Remove old simple fade logic and use GSAP
+    const tl = gsap.timeline();
 
-    setTimeout(() => {
-      // Update content
-      prodlineupTitle.textContent = data.title;
-      prodlineupPrice.textContent = data.price;
-      prodlineupDesc.textContent = data.desc;
-      prodlineupImg.src = data.img;
-      prodlineupBtn.textContent = data.buttonText;
-      prodlineupBtn.href = data.link;
-
-      // Fade back in
-      prodlineupContainer.classList.remove('fade-out');
-    }, PRODLINEUP_TRANSITION_MS);
+    // 1. Animate out the current content (faster)
+    tl.to([prodlineupImg, prodlineupTitle, prodlineupPrice, prodlineupDesc, prodlineupBtn], {
+      y: 10,
+      opacity: 0,
+      duration: 0.15,
+      stagger: 0.02,
+      ease: "power2.inOut",
+      onComplete: () => {
+        // 2. Update content when invisible
+        prodlineupTitle.textContent = data.title;
+        prodlineupPrice.textContent = data.price;
+        prodlineupDesc.textContent = data.desc;
+        prodlineupImg.src = data.img;
+        prodlineupBtn.textContent = data.buttonText;
+        prodlineupBtn.href = data.link;
+      }
+    })
+      // 3. Animate the new content back in (faster)
+      .fromTo([prodlineupImg, prodlineupTitle, prodlineupPrice, prodlineupDesc, prodlineupBtn],
+        { y: 10, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.2, stagger: 0.02, ease: "power2.out" }
+      );
   });
 });

@@ -68,13 +68,13 @@ footer {
 }
 
 .welcome-section .content {
+    display: flex;
+    flex-direction: column;
     width: 80%;
     text-align: center;
-    flex-direction: row;
-    /* Side-by-side */
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 15px;
     transform-style: preserve-3d;
     /* Mouse tracking handled by GSAP */
 }
@@ -378,6 +378,9 @@ footer {
 .amun_image {
     position: relative;
     animation: floatMonolith 6s ease-in-out infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @keyframes floatMonolith {
@@ -395,24 +398,34 @@ footer {
 .amun_image img {
     border-radius: 0;
     /* Sharp edges for monolith feel */
-    box-shadow:
-        0 30px 60px rgba(0, 0, 0, 0.9),
-        0 0 100px rgba(232, 170, 86, 0.2);
+
     /* Huge golden aura */
-    border: 2px solid rgba(232, 170, 86, 0.8);
+
     /* Solid gold border */
     /* Give it a metallic sheen over top */
     position: relative;
+    display: block;
+    width: 100%;
 }
 
 .amun_image::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, transparent 20%, rgba(255, 255, 255, 0.5) 50%, transparent 80%);
+    /* Use Spirezen gold so it contrasts against the solid white logo */
+    background: linear-gradient(135deg, transparent 20%, rgba(232, 170, 86, 0.4) 40%, rgba(232, 170, 86, 1) 50%, rgba(232, 170, 86, 0.4) 60%, transparent 80%);
     background-size: 300% 300%;
     animation: sweepGlare 4s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
     pointer-events: none;
+    -webkit-mask-image: url('../img/thedaleDigiNova%20logo%20D%20only%20png.png');
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-image: url('../img/thedaleDigiNova%20logo%20D%20only%20png.png');
+    mask-size: 100% 100%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    z-index: 2;
 }
 
 @keyframes sweepGlare {
@@ -495,7 +508,7 @@ footer {
 
 .testimun_name-title {
     font-size: 2.8rem;
-    color: #e8aa56;
+    color: #b0b0b0;
     text-shadow: 0 0 10px rgba(232, 170, 86, 0.4);
 }
 
@@ -509,9 +522,7 @@ footer {
     padding: 100px 0;
 }
 
-.team-carousel {
-    /* Base styles, GSAP initiates the 3D flip */
-}
+/* .team-carousel is handled by GSAP */
 
 .team-slide.active {
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9);
@@ -591,7 +602,6 @@ footer {
 }
 
 .announcement_card:hover {
-    transform: translateZ(50px) scale(1.05);
     box-shadow:
         0 20px 50px rgba(0, 0, 0, 0.8),
         0 0 0 2px rgba(232, 170, 86, 0.5);
@@ -606,4 +616,88 @@ footer {
     background: linear-gradient(180deg, #050505 0%, #000 100%) !important;
     border-top: 1px solid rgba(232, 170, 86, 0.3);
     /* Distinct gold line separating content from abyss */
+}
+
+/* =========================================
+   12. MOBILE OPTIMIZATIONS
+   ========================================= */
+@media (max-width: 768px) {
+
+    /* Hero Section */
+    .welcome-section {
+        height: 50vh;
+        min-height: 50vh;
+        max-height: 50vh;
+        padding-top: 15vh;
+        /* Push content down slightly for balance */
+    }
+
+    .welcome-section .content {
+        flex-direction: column;
+        gap: 5px;
+        width: 90%;
+    }
+
+    .contenth1 {
+        font-size: clamp(2rem, 6vw, 2.5rem) !important;
+        letter-spacing: 1px;
+    }
+
+    .logowel {
+        width: 140px !important;
+    }
+
+    .scroll-indicator {
+        bottom: 20px;
+    }
+
+    .scroll-indicator .mouse {
+        display: block;
+        transform: scale(0.8);
+    }
+
+    /* Video Section */
+    .video-section {
+        padding-bottom: 60px;
+        margin-top: -30px;
+    }
+
+    /* Layout Tension Quote Section */
+    .split-quote-section {
+        padding: 80px 0;
+        gap: 40px;
+    }
+
+    .split-quote-left .quote_line {
+        font-size: clamp(24px, 5vw, 32px);
+    }
+
+    .split-quote-right .quote_line {
+        font-size: clamp(28px, 6vw, 40px);
+    }
+
+    /* Generic Paddings */
+    .indeximagebio_section,
+    .amun_intro,
+    .prodlineup_section,
+    .team-split-section,
+    .key-features-section,
+    .announcement_section {
+        padding: 60px 0;
+    }
+
+    /* Product Lineup */
+    .testimun_name-section {
+        padding: 40px 0;
+    }
+
+    .testimun_name-logo {
+        width: 150px;
+        height: 150px;
+        margin: 0 10px;
+    }
+
+    .testimun_name-title {
+        font-size: 1.8rem;
+    }
 }

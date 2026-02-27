@@ -1127,7 +1127,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
-  align-items: start;
+  align-items: stretch;
 }
 
 /* Individual feature box */
@@ -1135,6 +1135,8 @@ body {
   background: transparent;
   /* keep transparent, change if you want a card */
   padding: 0;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 /* Heading with small accent bar */
@@ -1392,15 +1394,21 @@ body {
   width: clamp(12px, 1.6vw, 14px);
   height: clamp(12px, 1.6vw, 14px);
   border-radius: 50%;
-  border: none;
+  border: none !important;
   background: #4a4a4a;
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease;
+  box-shadow: none !important;
+  padding: 0 !important;
+  outline: none !important;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .team-dot.active {
-  background: #e8aa56;
+  background: #e8aa56 !important;
   transform: scale(1.15);
+  box-shadow: 0 0 10px rgba(232, 170, 86, 0.4) !important;
 }
 
 /* ===== Hover polish (desktop pointers) ===== */
@@ -1542,8 +1550,8 @@ body {
   display: block;
   width: 100%;
   height: 220px;
-  object-fit: cover;
-  background: #0b0b0b;
+  object-fit: contain;
+  background: #000;
 }
 
 .announcement_info {
@@ -2069,7 +2077,7 @@ body {
 
   .welcome-section,
   .welcome-section .content {
-    gap: 20px !important;
+    gap: 5px !important;
     align-items: center !important;
     justify-content: center !important;
     flex-direction: column !important;

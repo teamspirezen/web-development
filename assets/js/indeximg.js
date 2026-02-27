@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const slides   = [...document.querySelectorAll(".team-slide")];
-  const dots     = [...document.querySelectorAll(".team-dot")];
+  const slides = [...document.querySelectorAll(".team-slide")];
+  const dots = [...document.querySelectorAll(".team-dot")];
   const carousel = document.querySelector(".team-carousel");
   if (!slides.length || !carousel) return;
 
@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let timer = null;
   let isAnimating = false;
 
-  const prefersReduced   = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const AUTOPLAY_DELAY   = 4500;
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const AUTOPLAY_DELAY = 4500;
 
   // ---------- Core show/hide ----------
   function show(n, { immediate = false } = {}) {
@@ -17,10 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (next === current) return;
 
     const from = slides[current];
-    const to   = slides[next];
+    const to = slides[next];
 
-    // update dots immediately
-    dots[current]?.classList.remove("active");
+    // clear active from all dots first to prevent multiple active dots
+    dots.forEach(d => d.classList.remove("active"));
     dots[next]?.classList.add("active");
 
     // If we want an instant, zero-lag jump (used when user clicks during animation)
@@ -120,20 +120,20 @@ document.addEventListener("DOMContentLoaded", () => {
     dragging = false;
 
     const threshold = Math.max(30, carousel.clientWidth * 0.12);
-    if (deltaX < -threshold)      show(current + 1);
-    else if (deltaX > threshold)  show(current - 1);
+    if (deltaX < -threshold) show(current + 1);
+    else if (deltaX > threshold) show(current - 1);
 
     start();
   }
 
   carousel.addEventListener("touchstart", onTouchStart, { passive: true });
-  carousel.addEventListener("touchmove",  onTouchMove,  { passive: true });
-  carousel.addEventListener("touchend",   onTouchEnd,   { passive: true });
+  carousel.addEventListener("touchmove", onTouchMove, { passive: true });
+  carousel.addEventListener("touchend", onTouchEnd, { passive: true });
 
   // ---------- Keyboard (arrow keys) ----------
   carousel.tabIndex = 0;
   carousel.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft")  { stop(); show(current - 1); start(); }
+    if (e.key === "ArrowLeft") { stop(); show(current - 1); start(); }
     if (e.key === "ArrowRight") { stop(); show(current + 1); start(); }
   });
 
