@@ -525,18 +525,7 @@ footer {
 
 /* .team-carousel is handled by GSAP */
 
-.team-slide.active {
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9);
-    border: 1px solid rgba(232, 170, 86, 0.5);
-    transform: scale(1.05) translateZ(40px);
-    /* Pop active out */
-}
-
-.team-slide:not(.active) {
-    opacity: 0.3;
-    transform: scale(0.85) translateZ(-100px);
-    filter: blur(3px) grayscale(80%);
-}
+/* team-slide transitions handled by indexstyle.css — no 3D overrides */
 
 /* =========================================
    9. FEATURES SECTION: "Levitating Pillars"

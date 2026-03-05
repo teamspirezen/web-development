@@ -149,9 +149,9 @@ document.addEventListener('DOMContentLoaded', () => {
         mouseY += (targetY - mouseY) * 0.05;
 
         if (sphere) {
-            // Rotation based on mouse
-            sphere.rotation.x += 0.002 + (mouseY * 0.002);
-            sphere.rotation.y += 0.002 + (mouseX * 0.002);
+            // Rotation based on mouse only (auto-spin removed)
+            sphere.rotation.x += (mouseY * 0.002);
+            sphere.rotation.y += (mouseX * 0.002);
 
             // Subtle float
             const time = Date.now() * 0.001;
