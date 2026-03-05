@@ -15,43 +15,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroLogo = document.querySelector('.logowel');
 
     if (heroContent) {
-        document.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
+        // Setup highly performant quickTo setters for mouse tracking
+        const xText = gsap.quickTo(heroText, "x", { duration: 0.8, ease: "power2.out" });
+        const yText = gsap.quickTo(heroText, "y", { duration: 0.8, ease: "power2.out" });
+        const rYText = gsap.quickTo(heroText, "rotationY", { duration: 0.8, ease: "power2.out" });
+        const rXText = gsap.quickTo(heroText, "rotationX", { duration: 0.8, ease: "power2.out" });
 
-            // Normalized coordinates (-1 to 1)
-            const x = (clientX - centerX) / centerX;
-            const y = (clientY - centerY) / centerY;
+        const xLogo = gsap.quickTo(heroLogo, "x", { duration: 1.2, ease: "power2.out" });
+        const yLogo = gsap.quickTo(heroLogo, "y", { duration: 1.2, ease: "power2.out" });
+        const rYLogo = gsap.quickTo(heroLogo, "rotationY", { duration: 1.2, ease: "power2.out" });
+        const rXLogo = gsap.quickTo(heroLogo, "rotationX", { duration: 1.2, ease: "power2.out" });
+
+        const rYContent = gsap.quickTo(heroContent, "rotationY", { duration: 1.8, ease: "power1.out" });
+        const rXContent = gsap.quickTo(heroContent, "rotationX", { duration: 1.8, ease: "power1.out" });
+
+        let centerX = window.innerWidth / 2;
+        let centerY = window.innerHeight / 2;
+
+        window.addEventListener('resize', () => {
+            centerX = window.innerWidth / 2;
+            centerY = window.innerHeight / 2;
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            // Using requestAnimationFrame to throttle mousemove slightly could help, but quickTo handles it beautifully
+            const x = (e.clientX - centerX) / centerX;
+            const y = (e.clientY - centerY) / centerY;
 
             // Animate Text deeply Inverse
-            gsap.to(heroText, {
-                x: -x * 40,
-                y: -y * 40,
-                rotationY: x * 15,
-                rotationX: -y * 15,
-                duration: 1,
-                ease: "power2.out"
-            });
+            xText(-x * 40);
+            yText(-y * 40);
+            rYText(x * 15);
+            rXText(-y * 15);
 
             // Animate Logo Forward
-            gsap.to(heroLogo, {
-                x: x * 20,
-                y: y * 20,
-                rotationY: x * 25,
-                rotationX: -y * 25,
-                duration: 1.5,
-                ease: "power2.out"
-            });
+            xLogo(x * 20);
+            yLogo(y * 20);
+            rYLogo(x * 25);
+            rXLogo(-y * 25);
 
             // Subtle shift on the whole wrapper
-            gsap.to(heroContent, {
-                rotationY: x * 5,
-                rotationX: -y * 5,
-                duration: 2,
-                ease: "power1.out"
-            });
-        });
+            rYContent(x * 5);
+            rXContent(-y * 5);
+        }, { passive: true }); // passive listener reduces main thread blocking
     }
 
     // =========================================
