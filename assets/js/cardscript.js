@@ -142,34 +142,7 @@
     requestAnimationFrame(rafLoop);
   }
 
-  // Cursor-scrub handlers
-  function onMouseMove(e) {
-    if (!isCursorScrubAllowed()) return;
-    if (isDragging) return;
-    const rect = slider.parentElement.getBoundingClientRect();
-    const localX = e.clientX - rect.left;
-    const w = Math.max(1, rect.width);
-    const maxStart = Math.max(0, cards.length - visible);
-    // map pointer pos across wrapper to fractional index 0..maxStart
-    const frac = (localX / w) * maxStart;
-    scrubTarget = clampScrubTarget(frac);
-    isScrubbing = true;
-    stopAutoplay();
-  }
-  function onMouseLeave() {
-    if (!isScrubbing) return;
-    isScrubbing = false;
-    const snapTo = Math.round(scrubTarget);
-    goToIndex(snapTo, true);
-    restartAutoplay();
-  }
-  function isCursorScrubAllowed() {
-    if (window.innerWidth <= 480) return false;
-    if ('ontouchstart' in window && window.innerWidth < 900) return false;
-    if (!cards.length) return false;
-    if (cards.length <= visible) return false;
-    return true;
-  }
+  // Cursor-scrub removed — mouse movement no longer scrubs the slider
 
   // Touch/drag handlers (mobile)
   function onTouchStart(e) {
@@ -244,10 +217,7 @@
   });
   container.tabIndex = 0;
 
-  // hover / focus
-  container.addEventListener("mouseenter", () => { if (isCursorScrubAllowed()) stopAutoplay(); });
-  container.addEventListener("mouseleave", () => { onMouseLeave(); });
-  container.addEventListener("mousemove", onMouseMove);
+  // hover / focus (mouse-scrub removed)
   container.addEventListener("focusin", stopAutoplay);
   container.addEventListener("focusout", restartAutoplay);
 

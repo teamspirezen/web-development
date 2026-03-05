@@ -21,10 +21,10 @@
   prevBtn.addEventListener('click', scrollPrev);
 
   // Auto slide (pause on hover / focus)
-  let auto = setInterval(scrollNext, 4000);
+  let auto = setInterval(scrollNext, 1500);
 
   function pause() { clearInterval(auto); }
-  function resume() { auto = setInterval(scrollNext, 4000); }
+  function resume() { auto = setInterval(scrollNext, 1500); }
 
   track.addEventListener('mouseenter', pause);
   track.addEventListener('mouseleave', resume);

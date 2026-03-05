@@ -1,4 +1,4 @@
-/* =========================
+﻿/* =========================
    Welcome (Hero Mini) — Clean
    ========================= */
 
@@ -986,7 +986,7 @@ body {
 .testimun_name-title {
   font-size: 22px;
   font-weight: 700;
-  color:#e8aa56;
+  color: #e8aa56;
   white-space: nowrap;
 }
 
@@ -1334,20 +1334,17 @@ body {
   inset: 0;
   opacity: 0;
   pointer-events: none;
-  transform: scale(0.96);
-  transition: opacity .6s ease, transform .8s cubic-bezier(.25, .85, .25, 1);
+  transition: opacity 0.10s ease;
 }
 
 .team-slide.active {
   opacity: 1;
   pointer-events: auto;
-  transform: scale(1);
   z-index: 2;
 }
 
 .team-slide.exiting {
   opacity: 0;
-  transform: scale(1.05);
   z-index: 1;
 }
 
