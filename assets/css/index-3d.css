@@ -54,6 +54,7 @@ footer {
     opacity: 0.8;
     z-index: -2;
     transform: translateZ(-1000px) scale(3);
+    will-change: transform;
     /* Push deep back */
 }
 
@@ -75,7 +76,7 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 15px;
-    transform-style: preserve-3d;
+    will-change: transform;
     /* Mouse tracking handled by GSAP */
 }
 
@@ -93,7 +94,7 @@ footer {
         /* Soft gold glow */
         0px 10px 30px rgba(0, 0, 0, 0.8);
     /* Deep heavy shadow */
-    transform-style: preserve-3d;
+    will-change: transform;
     /* GSAP injects translate/rotate array */
 }
 
@@ -101,7 +102,7 @@ footer {
 .logowel {
     width: 340px !important;
     filter: drop-shadow(0 20px 30px rgba(232, 170, 86, 0.4));
-    transform-style: preserve-3d;
+    will-change: transform, filter;
 }
 
 /* Scroll Down Indicator */

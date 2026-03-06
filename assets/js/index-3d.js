@@ -15,43 +15,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroLogo = document.querySelector('.logowel');
 
     if (heroContent) {
-        document.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
+        // Setup highly performant quickTo setters for mouse tracking
+        const xText = gsap.quickTo(heroText, "x", { duration: 0.8, ease: "power2.out" });
+        const yText = gsap.quickTo(heroText, "y", { duration: 0.8, ease: "power2.out" });
+        const rYText = gsap.quickTo(heroText, "rotationY", { duration: 0.8, ease: "power2.out" });
+        const rXText = gsap.quickTo(heroText, "rotationX", { duration: 0.8, ease: "power2.out" });
 
-            // Normalized coordinates (-1 to 1)
-            const x = (clientX - centerX) / centerX;
-            const y = (clientY - centerY) / centerY;
+        const xLogo = gsap.quickTo(heroLogo, "x", { duration: 1.2, ease: "power2.out" });
+        const yLogo = gsap.quickTo(heroLogo, "y", { duration: 1.2, ease: "power2.out" });
+        const rYLogo = gsap.quickTo(heroLogo, "rotationY", { duration: 1.2, ease: "power2.out" });
+        const rXLogo = gsap.quickTo(heroLogo, "rotationX", { duration: 1.2, ease: "power2.out" });
+
+        const rYContent = gsap.quickTo(heroContent, "rotationY", { duration: 1.8, ease: "power1.out" });
+        const rXContent = gsap.quickTo(heroContent, "rotationX", { duration: 1.8, ease: "power1.out" });
+
+        let centerX = window.innerWidth / 2;
+        let centerY = window.innerHeight / 2;
+
+        window.addEventListener('resize', () => {
+            centerX = window.innerWidth / 2;
+            centerY = window.innerHeight / 2;
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            // Using requestAnimationFrame to throttle mousemove slightly could help, but quickTo handles it beautifully
+            const x = (e.clientX - centerX) / centerX;
+            const y = (e.clientY - centerY) / centerY;
 
             // Animate Text deeply Inverse
-            gsap.to(heroText, {
-                x: -x * 40,
-                y: -y * 40,
-                rotationY: x * 15,
-                rotationX: -y * 15,
-                duration: 1,
-                ease: "power2.out"
-            });
+            xText(-x * 40);
+            yText(-y * 40);
+            rYText(x * 15);
+            rXText(-y * 15);
 
             // Animate Logo Forward
-            gsap.to(heroLogo, {
-                x: x * 20,
-                y: y * 20,
-                rotationY: x * 25,
-                rotationX: -y * 25,
-                duration: 1.5,
-                ease: "power2.out"
-            });
+            xLogo(x * 20);
+            yLogo(y * 20);
+            rYLogo(x * 25);
+            rXLogo(-y * 25);
 
             // Subtle shift on the whole wrapper
-            gsap.to(heroContent, {
-                rotationY: x * 5,
-                rotationX: -y * 5,
-                duration: 2,
-                ease: "power1.out"
-            });
-        });
+            rYContent(x * 5);
+            rXContent(-y * 5);
+        }, { passive: true }); // passive listener reduces main thread blocking
     }
 
     // =========================================
@@ -220,74 +226,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =========================================
-    // 8. TEAM SECTION: "Carousel Dimension"
-    // Note: Depends on existing cardscript for loop, this just adds 3D entry
-    // =========================================
-    const teamCarousel = document.querySelector('.team-carousel');
-    const firstSlide = document.querySelector('.team-slide.active');
-    const firstSlideImg = firstSlide ? firstSlide.querySelector('img') : null;
-    const firstSlideInfo = firstSlide ? firstSlide.querySelector('.team-slide-info') : null;
-    const firstSlideH3 = firstSlideInfo ? firstSlideInfo.querySelector('h3') : null;
-
-    if (teamCarousel) {
-        // 1. 2026: 3D depth-to-front — carousel scales up from deep Z
-        gsap.set(teamCarousel, { transformPerspective: 900 });
-        gsap.fromTo(teamCarousel,
-            { z: -400, rotationY: 12, opacity: 0, scale: 0.8 },
-            {
-                z: 0, rotationY: 0, opacity: 1, scale: 1,
-                duration: 1.3, ease: "power3.out",
-                scrollTrigger: {
-                    trigger: '.team-split-section',
-                    start: "top 80%"
-                }
-            }
-        );
-
-        // 2. Image: hologram lock — hue-shifted + blurred → true color & sharp
-        if (firstSlideImg) {
-            gsap.fromTo(firstSlideImg,
-                { filter: 'hue-rotate(120deg) blur(6px) brightness(1.4)', scale: 1.06, opacity: 0.7 },
-                {
-                    filter: 'hue-rotate(0deg) blur(0px) brightness(1)', scale: 1, opacity: 1,
-                    duration: 1.2, ease: "power2.inOut", delay: 0.5,
-                    scrollTrigger: {
-                        trigger: '.team-split-section',
-                        start: "top 78%"
-                    }
-                }
-            );
-        }
-
-        // 3. Double neon ring — gold inner + white outer pulse
-        gsap.fromTo(teamCarousel,
-            { boxShadow: '0 0 0px rgba(232,170,86,0), 0 0 0px rgba(255,255,255,0)' },
-            {
-                boxShadow: '0 0 30px rgba(232,170,86,0.7), 0 0 60px rgba(255,255,255,0.12), 0 0 0 2px rgba(232,170,86,0.5)',
-                duration: 0.7, ease: "power2.out", delay: 1.1,
-                yoyo: true, repeat: 1,
-                scrollTrigger: {
-                    trigger: '.team-split-section',
-                    start: "top 78%"
-                }
-            }
-        );
-
-        // 4. Name: per-word stagger reveal — futuristic split entrance
-        if (firstSlideH3) {
-            const words = firstSlideH3.textContent.trim().split(' ');
-            firstSlideH3.innerHTML = words.map(w => `<span style="display:inline-block;opacity:0;transform:translateY(14px)">${w}</span>`).join(' ');
-            gsap.to(firstSlideH3.querySelectorAll('span'), {
-                opacity: 1, y: 0,
-                duration: 0.45, stagger: 0.1, ease: "power3.out", delay: 1.7,
-                scrollTrigger: {
-                    trigger: '.team-split-section',
-                    start: "top 78%"
-                }
-            });
-        }
-    }
 
     // =========================================
     // 9. FEATURES: "Levitating Pillars"
