@@ -228,6 +228,142 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // =========================================
+    // 8. TEAM SECTION: "2026 — Carousel Dimension"
+    // 3D reveal + hologram lock + neon ring + char stagger
+    // =========================================
+    const teamSection = document.querySelector('.team-split-section');
+    const teamLeft = document.querySelector('.team-split-left');
+    const teamOverline = document.querySelector('.team-overline');
+    const teamTitle = document.querySelector('.team-title');
+    const teamDesc = document.querySelector('.team-description');
+    const teamCarousel = document.querySelector('.team-carousel');
+    const teamDots = document.querySelector('.team-nav-dots');
+
+    if (teamSection && teamLeft && teamCarousel) {
+
+        // ── Left column: staggered slide-in from left ──
+        gsap.set([teamOverline, teamTitle, teamDesc], { x: -80, opacity: 0 });
+        gsap.to([teamOverline, teamTitle, teamDesc], {
+            x: 0, opacity: 1,
+            duration: 0.9, ease: 'power3.out', stagger: 0.18,
+            scrollTrigger: {
+                trigger: teamSection, start: 'top 75%',
+                toggleActions: 'play none none none'
+            }
+        });
+
+        // ── (1) 3D Perspective Reveal — scales up from deep Z ──
+        gsap.set(teamCarousel, { z: -600, scale: 0.65, opacity: 0, rotationX: 22 });
+        gsap.to(teamCarousel, {
+            z: 0, scale: 1, opacity: 1, rotationX: 0,
+            duration: 1.4, ease: 'back.out(1.5)',
+            scrollTrigger: {
+                trigger: teamSection, start: 'top 78%',
+                toggleActions: 'play none none none'
+            },
+            onComplete: () => {
+
+                // ── (3) Double Neon Ring — gold inner + white outer pulse ──
+                gsap.fromTo(teamCarousel,
+                    {
+                        boxShadow:
+                            '0 0 0 0px rgba(232,170,86,0), ' +
+                            '0 0 0 0px rgba(255,255,255,0)'
+                    },
+                    {
+                        boxShadow:
+                            '0 0 0 3px rgba(232,170,86,0.9), ' +
+                            '0 0 0 6px rgba(255,255,255,0.35), ' +
+                            '0 0 50px rgba(232,170,86,0.3)',
+                        duration: 0.55, ease: 'power2.out',
+                        yoyo: true, repeat: 1,
+                        onComplete: () => {
+                            // Settle to a thin persistent gold ring
+                            gsap.to(teamCarousel, {
+                                boxShadow:
+                                    '0 0 0 2px rgba(232,170,86,0.5), ' +
+                                    '0 0 20px rgba(232,170,86,0.1)',
+                                duration: 0.4
+                            });
+                        }
+                    }
+                );
+            }
+        });
+
+        // ── (4) Per-character name stagger ──
+        // Utility: split a text node into <span> per character
+        function splitToChars(el) {
+            if (!el || el.dataset.charSplit) return;
+            el.dataset.charSplit = '1';
+            const text = el.textContent;
+            el.textContent = '';
+            text.split('').forEach(ch => {
+                const s = document.createElement('span');
+                s.className = 'char-s';
+                s.textContent = ch === ' ' ? '\u00A0' : ch;
+                s.style.display = 'inline-block';
+                s.style.opacity = '0';
+                s.style.transform = 'translateY(14px)';
+                el.appendChild(s);
+            });
+        }
+
+        // Apply char split to active slide name immediately
+        const activeSlide = teamCarousel.querySelector('.team-slide.active, .team-slide');
+        const activeName = activeSlide ? activeSlide.querySelector('.team-slide-info h3') : null;
+        if (activeName) {
+            splitToChars(activeName);
+            // Animate chars in after the carousel lands (1.4s delay matches reveal duration)
+            gsap.to(activeName.querySelectorAll('.char-s'), {
+                opacity: 1, y: 0,
+                duration: 0.4, ease: 'power2.out', stagger: 0.03,
+                delay: 1.4
+            });
+        }
+
+        // Hook into slide changes — re-run char stagger on every new slide
+        // We observe the carousel for class changes on slides using MutationObserver
+        const mo = new MutationObserver(() => {
+            const nowActive = teamCarousel.querySelector('.team-slide.active');
+            if (!nowActive) return;
+            const nameEl = nowActive.querySelector('.team-slide-info h3');
+            if (!nameEl) return;
+            splitToChars(nameEl);
+            gsap.fromTo(nameEl.querySelectorAll('.char-s'),
+                { opacity: 0, y: 14 },
+                { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out', stagger: 0.03 }
+            );
+        });
+        mo.observe(teamCarousel, { subtree: true, attributeFilter: ['class'] });
+
+        // ── Dots fade in last ──
+        if (teamDots) {
+            gsap.set(teamDots, { opacity: 0, y: 20 });
+            gsap.to(teamDots, {
+                opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', delay: 0.7,
+                scrollTrigger: {
+                    trigger: teamSection, start: 'top 78%',
+                    toggleActions: 'play none none none'
+                }
+            });
+        }
+
+        // ── Hover: live 3D tilt on carousel ──
+        const tiltX = gsap.quickTo(teamCarousel, 'rotationY', { duration: 0.5, ease: 'power2.out' });
+        const tiltY = gsap.quickTo(teamCarousel, 'rotationX', { duration: 0.5, ease: 'power2.out' });
+        teamCarousel.addEventListener('mousemove', (e) => {
+            const rect = teamCarousel.getBoundingClientRect();
+            const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+            const ny = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+            tiltX(nx * 8);
+            tiltY(-ny * 8);
+        }, { passive: true });
+        teamCarousel.addEventListener('mouseleave', () => { tiltX(0); tiltY(0); });
+    }
+
+
+    // =========================================
     // 9. FEATURES: "Levitating Pillars"
     // =========================================
     const features = document.querySelectorAll('.feature-box');
