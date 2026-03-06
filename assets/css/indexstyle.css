@@ -991,10 +991,7 @@ body {
 }
 
 .testimun_name-text {
-  background: linear-gradient(135deg, #ffffff, #aaaaaa);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ffffff;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.4;
